@@ -1,13 +1,13 @@
 import asyncio
 import time
 from multiprocessing import Pool
-from loguru import logger
-import sys
+# from loguru import logger
+import sys, os
 import random
 
 
-logger.remove()
-logger.add(sys.stdout, colorize=True, format="{time} <green>{message}</green>", level='INFO')
+# logger.remove()
+# logger.add(sys.stdout, colorize=True, format="{time} <green>{message}</green>", level='INFO')
 
 
 def time_execute(func):
@@ -40,7 +40,10 @@ def main():
     process.close()
 
 
-main()
+# main()
+result = 100
+x = 1111 & result
+print(x)
 
 
 
