@@ -6,7 +6,6 @@
 from sofistik_daten import *
 import os               # for the environment variable necessary, this is a great tool
 import platform         # checks the python platform
-import string
 from ctypes import *    # read the functions from the cdb
 
 # This example has been tested with Python 3.7 (64-bit)
