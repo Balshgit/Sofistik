@@ -2,13 +2,14 @@
 # | Company:   SOFiSTiK AG                                                     |
 # | Version:   SOFiSTIK 2020                                                   |
 # +============================================================================+
-
-from sofistik_daten import *
 import os               # for the environment variable necessary, this is a great tool
 import sys
-from ctypes import *    # read the functions from the cdb
 import logging
 import re
+
+from sofistik_daten import *
+from ctypes import *    # read the functions from the cdb
+from utils import write_to_file, read_data_from_file
 
 console_logger = logging.getLogger(__name__)
 formatter = logging.Formatter(datefmt="%Y.%m.%d %H:%M:%S", fmt='%(asctime)s | func name: %(funcName)s |'
@@ -36,7 +37,7 @@ class Sofistik:
         self._py_sof_cdb_kexist = cdll.LoadLibrary('sof_cdb_w-70.dll').sof_cdb_kexist
 
         # Load Database file
-        self._filename = fr'{filename}'.replace('\\', '\\\\')  # "C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb"
+        self._filename = fr'{filename}'  # "C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb"
 
         self._Index = c_int()
 
@@ -149,13 +150,17 @@ for quad_item in quad_data:
     quad_dict[quad_number] = nodes
 
 # Recreate quad dict to quad number and list of it dots coordinates
-
-# with open('rectangles.txt', mode='a') as file:
 for quad_number, list_nodes in quad_dict.items():
     nodes_list = node_coords(list_nodes)
     quad_dict[quad_number] = nodes_list
-    # file.write(f'{quad_number}: {nodes_list},\n')
     console_logger.info(f'{quad_number}: {nodes_list}')
+
+
+# # ------ Write to a file and extract it back --------
+# write_to_file(data=quad_dict, filename='./rectangles.txt')
+#
+# data = read_data_from_file('./rectangles.txt')
+# #  ----------------------------------------------------------
 
 
 #  Draw rectangles!!!!
