@@ -149,14 +149,18 @@ for quad_item in quad_data:
     quad_dict[quad_number] = nodes
 
 # Recreate quad dict to quad number and list of it dots coordinates
+
+# with open('rectangles.txt', mode='a') as file:
 for quad_number, list_nodes in quad_dict.items():
     nodes_list = node_coords(list_nodes)
     quad_dict[quad_number] = nodes_list
+    # file.write(f'{quad_number}: {nodes_list},\n')
     console_logger.info(f'{quad_number}: {nodes_list}')
 
 
 #  Draw rectangles!!!!
 rectangles = [rectangle for rectangle in quad_dict.values()]
+
 
 from PIL import Image, ImageDraw, ImageFont
 
