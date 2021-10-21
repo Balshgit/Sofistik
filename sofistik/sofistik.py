@@ -9,7 +9,7 @@ import re
 
 from sofistik_daten import *
 from ctypes import *    # read the functions from the cdb
-from utils import write_to_file, read_data_from_file
+from utils import write_to_file, read_data_from_file, create_image
 
 console_logger = logging.getLogger(__name__)
 formatter = logging.Formatter(datefmt="%Y.%m.%d %H:%M:%S", fmt='%(asctime)s | func name: %(funcName)s |'
@@ -112,65 +112,62 @@ class Sofistik:
         return result
 
 
-sof = Sofistik(sofistik_year=2020, filename=r'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
-
-quad_data = sof.get_data(database_object=cquad, obj_db_index=200, obj_db_index_sub_number=0, args=['m_nr',
-                                                                                                   'm_node[0]',
-                                                                                                   'm_node[1]',
-                                                                                                   'm_node[2]',
-                                                                                                   'm_node[3]',
-                                                                                                   ])
-
-
-cnode_data = sof.get_data(database_object=cnode, obj_db_index=20, obj_db_index_sub_number=0, args=['m_nr',
-                                                                                                   'm_xyz[0]',
-                                                                                                   'm_xyz[1]',
-                                                                                                   ])
-# Create dict with node number and it coords
-cnodes_dict = dict()
-for node_item in cnode_data:
-    cnode_number = node_item[0]
-    coords = [round(node_item[i], 3) * 500 for i in range(1, len(node_item))]
-    cnodes_dict[cnode_number] = coords
-
-
-# Get list of nodes coordinates from list of nodes
-def node_coords(nodes: list) -> list:
-    nodes_coords = []
-    for node in nodes:
-        nodes_coords.append(tuple(cnodes_dict[node]))
-    return nodes_coords
-
-
-# Create dict with quad number and list of it nodes
-quad_dict = dict()
-for quad_item in quad_data:
-    quad_number = quad_item[0]
-    nodes = [quad_item[i] for i in range(1, len(quad_item))]
-    quad_dict[quad_number] = nodes
-
-# Recreate quad dict to quad number and list of it dots coordinates
-for quad_number, list_nodes in quad_dict.items():
-    nodes_list = node_coords(list_nodes)
-    quad_dict[quad_number] = nodes_list
-    console_logger.info(f'{quad_number}: {nodes_list}')
-
-
-# # ------ Write to a file and extract it back --------
-# write_to_file(data=quad_dict, filename='./rectangles.txt')
+# sof = Sofistik(sofistik_year=2020, filename=r'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
 #
-# data = read_data_from_file('./rectangles.txt')
-# #  ----------------------------------------------------------
+# quad_data = sof.get_data(database_object=cquad, obj_db_index=200, obj_db_index_sub_number=0, args=['m_nr',
+#                                                                                                    'm_node[0]',
+#                                                                                                    'm_node[1]',
+#                                                                                                    'm_node[2]',
+#                                                                                                    'm_node[3]',
+#                                                                                                    ])
+#
+#
+# cnode_data = sof.get_data(database_object=cnode, obj_db_index=20, obj_db_index_sub_number=0, args=['m_nr',
+#                                                                                                    'm_xyz[0]',
+#                                                                                                    'm_xyz[1]',
+#                                                                                                    ])
+# # Create dict with node number and it coords
+# cnodes_dict = dict()
+# for node_item in cnode_data:
+#     cnode_number = node_item[0]
+#     coords = [round(node_item[i], 3) * 500 for i in range(1, len(node_item))]
+#     cnodes_dict[cnode_number] = coords
+#
+#
+# # Get list of nodes coordinates from list of nodes
+# def node_coords(nodes: list) -> list:
+#     nodes_coords = []
+#     for node in nodes:
+#         nodes_coords.append(tuple(cnodes_dict[node]))
+#     return nodes_coords
+#
+#
+# # Create dict with quad number and list of it nodes
+# quad_dict = dict()
+# for quad_item in quad_data:
+#     quad_number = quad_item[0]
+#     nodes = [quad_item[i] for i in range(1, len(quad_item))]
+#     quad_dict[quad_number] = nodes
+#
+# # Recreate quad dict to quad number and list of it dots coordinates
+# for quad_number, list_nodes in quad_dict.items():
+#     nodes_list = node_coords(list_nodes)
+#     quad_dict[quad_number] = nodes_list
+#     console_logger.info(f'{quad_number}: {nodes_list}')
 
+
+# ------ Write to a file and extract it back --------
+# write_to_file(data=quad_dict, filename='./rectangles.txt')
+data = read_data_from_file('./rectangles.txt')
 
 #  Draw rectangles!!!!
-rectangles = [rectangle for rectangle in quad_dict.values()]
 
+# rectangles = [rectangle for rectangle in quad_dict.values()]
+rectangles = list()
+for coords in data.values():
+    rectangle = list()
+    for coord in coords:
+        rectangle.append(tuple(coord))
+    rectangles.append(rectangle)
 
-from PIL import Image, ImageDraw, ImageFont
-
-img = Image.new('RGB', (2000, 1000), (255, 255, 255))
-d = ImageDraw.Draw(img)
-for rectangle in rectangles:
-    d.polygon(rectangle, fill="green", outline='yellow')
-img.save('test_image_from_python.png')
+create_image(data=rectangles, image_name='test_image_from_python.png')
