@@ -20,17 +20,4 @@ import json
 #         logger.info(f'{func.__name__} ended its work: in {round(dt,2)} seconds.')
 #     return new_func
 
-from ast import literal_eval
-
-data = dict()
-with open('./sofistik/rectangles.txt', mode='r') as file:
-    # line = file.readlines()
-    # print(line)
-    data.update(json.load(file))
-
-for key, value in data.items():
-    print(int(key), literal_eval(value)[0])
-
-
-
 
