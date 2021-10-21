@@ -9,7 +9,7 @@ import re
 
 from sofistik_daten import *
 from ctypes import *    # read the functions from the cdb
-from utils import write_to_file, read_data_from_file, create_image
+from utils import write_to_file, read_data_from_file, create_image, text_coordinates
 
 console_logger = logging.getLogger(__name__)
 formatter = logging.Formatter(datefmt="%Y.%m.%d %H:%M:%S", fmt='%(asctime)s | func name: %(funcName)s |'
@@ -156,18 +156,20 @@ class Sofistik:
 #     console_logger.info(f'{quad_number}: {nodes_list}')
 
 
-# ------ Write to a file and extract it back --------
+# # ------ Write to a file and extract it back --------
 # write_to_file(data=quad_dict, filename='./rectangles.txt')
-data = read_data_from_file('./rectangles.txt')
+quad_dict = read_data_from_file('./rectangles.txt')
 
 #  Draw rectangles!!!!
-
-# rectangles = [rectangle for rectangle in quad_dict.values()]
-rectangles = list()
-for coords in data.values():
+for quad_number, coords in quad_dict.items():
     rectangle = list()
     for coord in coords:
         rectangle.append(tuple(coord))
-    rectangles.append(rectangle)
+    quad_dict[quad_number] = tuple(rectangle)
 
-create_image(data=rectangles, image_name='test_image_from_python.png')
+
+#rectangles = list(quad_dict.values())
+
+create_image(quad=quad_dict, image_name='test_image_from_python.png')
+
+
