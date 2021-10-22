@@ -47,7 +47,7 @@ if __name__ == '__main__':
     #     logger.info(f'{quad_number}: {tuple_nodes_coords}')
 
     # # ------ Write data to a file and extract it back --------
-    # write_to_file(data=quad_dict, filename='./sofistik/rectangles.txt')
+    # write_to_file(data=quad_dict, filename='result/rectangles.txt')
     quad_dict = read_data_from_file('result/rectangles.txt')
 
     #  Draw rectangles!!!!

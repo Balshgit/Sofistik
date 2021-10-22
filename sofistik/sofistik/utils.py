@@ -50,7 +50,7 @@ def read_data_from_file(filename: str) -> dict:
 @time_execute
 def create_image(quad: dict, image_name: str) -> None:
 
-    img = Image.new('RGB', (2000, 1000), (255, 255, 255))
+    img = Image.new('RGB', (1600, 600), (255, 255, 255))
     draw = ImageDraw.Draw(img)
 
     quad = mirror_quad_by_y(quad)
