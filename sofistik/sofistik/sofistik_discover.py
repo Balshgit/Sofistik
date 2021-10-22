@@ -5,7 +5,7 @@
 import os               # for the environment variable necessary, this is a great tool
 import re
 from ctypes import *    # read the functions from the cdb
-from utils import logger
+from .utils import logger
 
 
 class Sofistik:

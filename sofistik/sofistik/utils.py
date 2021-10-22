@@ -52,12 +52,14 @@ def create_image(quad: dict, image_name: str) -> None:
 
     img = Image.new('RGB', (2000, 1000), (255, 255, 255))
     draw = ImageDraw.Draw(img)
+
+    quad = mirror_quad_by_y(quad)
     for quad_number, rectangle in quad.items():
 
         # Prepare text
         text_x, text_y = get_text_coordinates(rectangle)
         fontsize = 15
-        font = ImageFont.truetype(font="../fonts/Roboto-Thin.ttf", size=fontsize)
+        font = ImageFont.truetype(font="fonts/Roboto-Thin.ttf", size=fontsize)
 
         # draw result
         draw.polygon(rectangle, fill=(randint(0, 255), randint(0, 255), randint(0, 255)), outline='yellow')
@@ -65,9 +67,9 @@ def create_image(quad: dict, image_name: str) -> None:
     img.save(image_name)
 
 
-def get_text_coordinates(quad: list) -> tuple:
+def get_text_coordinates(rectangle: list) -> tuple:
     all_x_coords, all_y_coords = [], []
-    for coord in quad:
+    for coord in rectangle:
         all_x_coords.append(coord[0])
         all_y_coords.append(coord[1])
 
@@ -80,3 +82,19 @@ def get_text_coordinates(quad: list) -> tuple:
     average_y = max(all_y_coords) - (max(all_y_coords) - min(all_y_coords)) / 2
 
     return average_x * 0.97, average_y * 0.95
+
+
+def mirror_quad_by_y(quad: dict) -> dict:
+    all_y_coords = list()
+    for rectangle in quad.values():
+        for coord in rectangle:
+            all_y_coords.append(coord[1])
+    max_y = max(all_y_coords)
+    for quad_number, rectangle in quad.items():
+        mirror_y = []
+        for coord in rectangle:
+            temp = list(coord)
+            temp[1] = max_y - temp[1]
+            mirror_y.append(tuple(temp))
+        quad[quad_number] = mirror_y
+    return quad
