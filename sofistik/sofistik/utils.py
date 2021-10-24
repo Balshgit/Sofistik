@@ -50,24 +50,26 @@ def read_data_from_file(filename: str) -> dict:
 @time_execute
 def create_image(quad: dict, image_name: str) -> None:
 
-    img = Image.new('RGB', (1600, 600), (255, 255, 255))
+    img = Image.new('RGB', (2000, 900), (255, 255, 255))
     draw = ImageDraw.Draw(img)
 
     quad = mirror_quad_by_y(quad)
     for quad_number, rectangle in quad.items():
 
         # Prepare text
-        text_x, text_y = get_text_coordinates(rectangle)
         fontsize = 15
+        text_x, text_y = get_text_coordinates(rectangle, fontsize)
         font = ImageFont.truetype(font="fonts/Roboto-Thin.ttf", size=fontsize)
 
         # draw result
         draw.polygon(rectangle, fill=(randint(0, 255), randint(0, 255), randint(0, 255)), outline='yellow')
-        draw.text((text_x, text_y), quad_number, font=font, fill='yellow')
+        # draw.polygon(rectangle, fill='green', outline='yellow')
+
+        draw.text((text_x, text_y), str(quad_number), font=font, fill='yellow')
     img.save(image_name)
 
 
-def get_text_coordinates(rectangle: list) -> tuple:
+def get_text_coordinates(rectangle: list, fontsize: int) -> tuple:
     all_x_coords, all_y_coords = [], []
     for coord in rectangle:
         all_x_coords.append(coord[0])
@@ -78,10 +80,16 @@ def get_text_coordinates(rectangle: list) -> tuple:
     # all_y_coords.remove(max(all_y_coords))
     # all_y_coords.remove(min(all_y_coords))
 
-    average_x = max(all_x_coords) - (max(all_x_coords) - min(all_x_coords)) / 2
-    average_y = max(all_y_coords) - (max(all_y_coords) - min(all_y_coords)) / 2
+    # average_x = min(all_x_coords) + (max(all_x_coords) - min(all_x_coords)) / 2 - fontsize / 2 / 2 * 6
+    # average_y = min(all_y_coords) + (max(all_y_coords) - min(all_y_coords)) / 2 - fontsize / 2
 
-    return average_x * 0.97, average_y * 0.95
+    # average_x = sum(all_x_coords) / 4 - fontsize / 2 / 2 * 6
+    # average_y = sum(all_y_coords) / 4 - fontsize / 2
+
+    average_x = (max(all_x_coords) + min(all_x_coords)) / 2 - fontsize / 2 / 2 * 6
+    average_y = (max(all_y_coords) + min(all_y_coords)) / 2 - fontsize / 2
+
+    return average_x * 1, average_y * 1
 
 
 def mirror_quad_by_y(quad: dict) -> dict:

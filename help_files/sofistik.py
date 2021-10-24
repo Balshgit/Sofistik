@@ -75,9 +75,9 @@ datalen = c_int(0)
 
 a = c_int()
 ie = c_int(0)
-datalen.value = sizeof(cquad)
+datalen.value = sizeof(cgar)
 
-RecLen = c_int(sizeof(cquad))
+RecLen = c_int(sizeof(cgar))
 
 """
 do while ie == 0, see cdbase.chm, Returnvalue.
@@ -93,19 +93,22 @@ do while ie == 0, see cdbase.chm, Returnvalue.
 
 # print('elementnumber materialnumber material Reinf')
 while ie.value < 2:
-    ie.value = py_sof_cdb_get(Index, 200, 0, byref(cquad), byref(RecLen), 1)
+    ie.value = py_sof_cdb_get(Index, 32, 1, byref(cgar), byref(RecLen), 1)
 
-    print("{:10d}       |     {:10d}       |  |     {}       {}     |   {:10.2f}".format(
-        cquad.m_nr,      # elementnumber#
-        cquad.m_node[0], cquad.m_node[1], cquad.m_node[2], cquad.m_node[3],
-        # cquad.m_mat,     # materialnumber
-        # cquad.m_mrf,    # material Reinf
-        # cquad.m_thick[0],
-    )
-    )
+    # print("{:10d}       |     {:10d}       |  |     {}       {}     |   {:10.2f}".format(
+    #     cquad.m_nr,      # elementnumber#
+    #     cquad.m_node[0], cquad.m_node[1], cquad.m_node[2], cquad.m_node[3],
+    #     # cquad.m_mat,     # materialnumber
+    #     # cquad.m_mrf,    # material Reinf
+    #     # cquad.m_thick[0],
+    # )
+    # )
+    # print(cgar.m_nog)
+    any = cgar.m_nog
+    print(any)
 
     # Always read the length of record before sof_cdb_get is called
-    RecLen = c_int(sizeof(cquad))
+    RecLen = c_int(sizeof(cgar))
 # -------------
 
 # while ie.value < 2:
