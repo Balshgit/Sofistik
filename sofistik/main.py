@@ -4,8 +4,8 @@ from sofistik.utils import write_to_file, read_data_from_file, create_image, log
 from sofistik.sofistik_discover import Sofistik
 
 
-def main() -> None:
-    sof = Sofistik(sofistik_year=2020, filename=r'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
+def quad_dict_from_db(sofistik_year: int, db_path: str) -> None:
+    sof = Sofistik(sofistik_year=sofistik_year, filename=fr'{db_path}')
 
     quad_data = sof.get_data(database_object=getattr(sof_struct, 'cquad'), obj_db_index=200, obj_db_index_sub_number=00,
                              args=['m_nr',
@@ -39,7 +39,6 @@ def main() -> None:
             nodes_coords.append(tuple(cnodes_dict[node]))
         return nodes_coords
 
-
     # Create dict with quad number and list of it nodes
     quad_dict = dict()
     for quad_item in quad_data:
@@ -51,13 +50,24 @@ def main() -> None:
         quad_dict[quad_number] = tuple_nodes_coords
         logger.info(f'{quad_number}: {tuple_nodes_coords}')
 
-    # # ------ Write data to a file and extract it back --------
-    # write_to_file(data=quad_dict, filename='result/rectangles.txt')
-    # quad_dict = read_data_from_file('result/rectangles.txt')
+
+# # ------ Write data to a file and extract it back --------
+# write_to_file(data=quad_dict, filename='result/rectangles.txt')
+
+
+def quad_dict_from_file(filename: str) -> dict:
+    quad_dict = read_data_from_file(filename)
+    return quad_dict
+
+
+def main() -> None:
+
+    # Read data
+    # quad_dict = quad_dict_from_db(sofistik_year=2020, db_path='C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
+    quad_dict = quad_dict_from_file(filename='result/rectangles.txt')
 
     # Draw rectangles!!!!
-
-    create_image(quad=quad_dict, image_name='result/test_image_from_python.jpg')
+    create_image(quad=quad_dict, image_name='result/test_image_from_python.bmp')
 
 
 if __name__ == '__main__':

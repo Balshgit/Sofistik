@@ -7,6 +7,7 @@ authors = ["Dmitry Afanasyev <Balshbox@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 Pillow = "^8.4.0"
+Pyqt6 = "6.2.0"
 
 [tool.poetry.dev-dependencies]
 

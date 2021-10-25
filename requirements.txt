@@ -1,1 +1,4 @@
 pillow==8.4.0; python_version >= "3.6"
+pyqt6-qt6==6.2.0; python_full_version >= "3.6.1"
+pyqt6-sip==13.1.0; python_version >= "3.6" and python_full_version >= "3.6.1"
+pyqt6==6.2.0; python_full_version >= "3.6.1"
