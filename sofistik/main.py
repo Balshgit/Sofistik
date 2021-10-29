@@ -60,15 +60,15 @@ def quad_dict_from_file(filename: str) -> dict:
     return quad_dict
 
 
-def main() -> None:
+def main(filepath: str) -> None:
 
     # Read data
-    # quad_dict = quad_dict_from_db(sofistik_year=2020, db_path='C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
-    quad_dict = quad_dict_from_file(filename='result/rectangles.txt')
+    quad_dict = quad_dict_from_db(sofistik_year=2020, db_path=filepath)#'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
+    quad_dict = quad_dict_from_file(filepath)#filename='result/rectangles.txt')
 
     # Draw rectangles!!!!
     create_image(quad=quad_dict, image_name='result/test_image_from_python.bmp')
 
 
 if __name__ == '__main__':
-    main()
+    main('')
