@@ -16,7 +16,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(QWidget):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(911, 539)
+        Dialog.resize(790, 470)
 
         self.OKButton = QtWidgets.QPushButton(Dialog)
         self.OKButton.setGeometry(QtCore.QRect(150, 10, 141, 61))
@@ -33,7 +33,7 @@ class Ui_Dialog(QWidget):
         self.File_name.setObjectName("File_name")
 
         self.pic = QtWidgets.QLabel(Dialog)
-        self.pic.setGeometry(QtCore.QRect(0, 90, 791, 381))
+        self.pic.setGeometry(QtCore.QRect(0, 90, 790, 380))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -56,8 +56,8 @@ class Ui_Dialog(QWidget):
         self.pic.setObjectName("label")
 
     def open_DB(self):
-        file_name, _ = QFileDialog.getOpenFileName(self, caption='Open Db file (.cdb, .txt)',
-                                                   filter='Db files .cdb, .txt (*.cdb *.txt)')
+        file_name, _ = QFileDialog.getOpenFileName(self, caption='Open database file',
+                                                   filter='Db files [.cdb, .txt] (*.cdb *.txt)')
         self.Openfile.file = Path(file_name)
         self.File_name.setText(self.Openfile.file.name)
 
