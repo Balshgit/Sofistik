@@ -43,7 +43,7 @@ class Ui_Dialog(QWidget):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.OKButton.setText(_translate("Dialog", "OK"))
-        self.Openfile.setText(_translate("Dialog", "OpenDB"))
+        self.Openfile.setText(_translate("Dialog", "Open Database file"))
         self.File_name.setText(_translate("Dialog", "File name"))
 
     def button_pushed(self):
@@ -56,7 +56,8 @@ class Ui_Dialog(QWidget):
         self.pic.setObjectName("label")
 
     def open_DB(self):
-        file_name, _ = QFileDialog.getOpenFileName(self, caption='Open Db file (.cdb, .txt)', filter='Db files (*.cdb *.txt)')
+        file_name, _ = QFileDialog.getOpenFileName(self, caption='Open Db file (.cdb, .txt)',
+                                                   filter='Db files .cdb, .txt (*.cdb *.txt)')
         self.Openfile.file = Path(file_name)
         self.File_name.setText(self.Openfile.file.name)
 

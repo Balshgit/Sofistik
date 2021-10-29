@@ -63,7 +63,8 @@ def quad_dict_from_file(filename: str) -> dict:
 def main(filepath: str) -> None:
 
     # Read data
-    quad_dict = quad_dict_from_db(sofistik_year=2020, db_path=filepath)#'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
+    # 'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
+    # quad_dict = quad_dict_from_db(sofistik_year=2020, db_path=filepath)
     quad_dict = quad_dict_from_file(filepath)#filename='result/rectangles.txt')
 
     # Draw rectangles!!!!
