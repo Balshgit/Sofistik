@@ -1,10 +1,10 @@
 from typing import List
 import sofistik.sofistik_daten as sof_struct
-from sofistik.utils import write_to_file, read_data_from_file, create_image, logger
+from sofistik.utils import write_to_file, read_data_from_txt, create_image, logger
 from sofistik.sofistik_discover import Sofistik
 
 
-def quad_dict_from_db(sofistik_year: int, db_path: str) -> None:
+def quad_dict_from_db(sofistik_year: int, db_path: str) -> dict:
     sof = Sofistik(sofistik_year=sofistik_year, filename=fr'{db_path}')
 
     quad_data = sof.get_data(database_object=getattr(sof_struct, 'cquad'), obj_db_index=200, obj_db_index_sub_number=00,
@@ -25,11 +25,15 @@ def quad_dict_from_db(sofistik_year: int, db_path: str) -> None:
                              args=['m_nog'])
     logger.info(cgar_data[0])
 
+    cquad_foc_data = sof.get_data(database_object=getattr(sof_struct, 'cquad_foc'), obj_db_index=210,
+                                  obj_db_index_sub_number=0, args=['m_mxx', 'm_myy', 'm_mxy', ])
+    logger.info((cquad_foc_data))
+
     # Create dict with node number and it coords
     cnodes_dict = dict()
     for node_item in cnode_data:
         cnode_number = node_item[0]
-        coords = [round(node_item[i], 3) * 650 for i in range(1, len(node_item))]
+        coords = [round(node_item[i], 3) * 500 for i in range(1, len(node_item))]
         cnodes_dict[cnode_number] = coords
 
     # Get list of nodes coordinates from list of nodes
@@ -50,26 +54,30 @@ def quad_dict_from_db(sofistik_year: int, db_path: str) -> None:
         quad_dict[quad_number] = tuple_nodes_coords
         logger.info(f'{quad_number}: {tuple_nodes_coords}')
 
+    return quad_dict
+
 
 # # ------ Write data to a file and extract it back --------
+# quad_dict = quad_dict_from_db(sofistik_year=2020, db_path=r'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
 # write_to_file(data=quad_dict, filename='result/rectangles.txt')
 
 
 def quad_dict_from_file(filename: str) -> dict:
-    quad_dict = read_data_from_file(filename)
+    quad_dict = read_data_from_txt(filename)
     return quad_dict
 
 
 def main(filepath: str) -> None:
 
     # Read data
-    # 'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
-    # quad_dict = quad_dict_from_db(sofistik_year=2020, db_path=filepath)
-    quad_dict = quad_dict_from_file(filepath)#filename='result/rectangles.txt')
+    # r'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
+    quad_dict = quad_dict_from_db(sofistik_year=2020, db_path=filepath)
+    # quad_dict = quad_dict_from_file(filepath)#filename='result/rectangles.txt')
 
     # Draw rectangles!!!!
     create_image(quad=quad_dict, image_name='result/test_image_from_python.bmp')
 
 
 if __name__ == '__main__':
-    main('')
+    main(r'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
+
