@@ -36,7 +36,7 @@ def write_to_file(data: dict, filename: str) -> None:
         file.write(write_data)
 
 
-def read_data_from_file(filename: str) -> dict:
+def read_data_from_txt(filename: str) -> dict:
     with open(filename, mode='r') as file:
         data = (json.load(file))
     for quad_number, coords in data.items():
