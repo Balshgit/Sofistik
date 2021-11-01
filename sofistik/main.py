@@ -72,4 +72,4 @@ def main(filepath: str) -> None:
 
 
 if __name__ == '__main__':
-    main('')
+    main('result/rectangles.txt')

@@ -26,7 +26,7 @@ class Ui_Dialog(QWidget):
         self.Openfile = QtWidgets.QPushButton(Dialog)
         self.Openfile.setGeometry(QtCore.QRect(310, 10, 341, 51))
         self.Openfile.setObjectName("Openfile")
-        self.Openfile.clicked.connect(self.open_DB)
+        self.Openfile.clicked.connect(self.open_db)
 
         self.File_name = QtWidgets.QLabel(Dialog)
         self.File_name.setGeometry(QtCore.QRect(670, 20, 201, 31))
@@ -55,7 +55,7 @@ class Ui_Dialog(QWidget):
         self.pic.setScaledContents(True)
         self.pic.setObjectName("label")
 
-    def open_DB(self):
+    def open_db(self):
         file_name, _ = QFileDialog.getOpenFileName(self, caption='Open database file',
                                                    filter='Db files [.cdb, .txt] (*.cdb *.txt)')
         self.Openfile.file = Path(file_name)
