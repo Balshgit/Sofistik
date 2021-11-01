@@ -1,5 +1,6 @@
-string = 'lsukjflskdfl'
+def hello():
+    print("Hi")
+    return "Hello World"
 
-string = string[:2] + 'D' + string[3:]
 
-print(string[2])
+hello()
