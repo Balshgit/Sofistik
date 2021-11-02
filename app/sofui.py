@@ -9,43 +9,48 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(911, 539)
-        self.OKButton = QtWidgets.QPushButton(Dialog)
-        self.OKButton.setGeometry(QtCore.QRect(150, 10, 141, 61))
-        self.OKButton.setStyleSheet("background-color: rgb(89, 255, 0);")
-        self.OKButton.setObjectName("OKButton")
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(0, 100, 911, 441))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../sofistik/result/test_image_from_python.bmp"))
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
-        self.Openfile = QtWidgets.QPushButton(Dialog)
-        self.Openfile.setGeometry(QtCore.QRect(310, 10, 341, 51))
-        self.Openfile.setObjectName("Openfile")
-        self.File_name = QtWidgets.QLabel(Dialog)
-        self.File_name.setGeometry(QtCore.QRect(670, 20, 201, 31))
-        self.File_name.setObjectName("File_name")
+class Ui_Ask_plate(object):
+    def setupUi(self, Ask_plate):
+        Ask_plate.setObjectName("Ask_plate")
+        Ask_plate.setEnabled(True)
+        Ask_plate.resize(169, 94)
+        self.plate_number_lable_text = QtWidgets.QLabel(Ask_plate)
+        self.plate_number_lable_text.setGeometry(QtCore.QRect(10, 10, 161, 20))
+        self.plate_number_lable_text.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.plate_number_lable_text.setObjectName("plate_number_lable_text")
+        self.plate_number = QtWidgets.QSpinBox(Ask_plate)
+        self.plate_number.setGeometry(QtCore.QRect(20, 40, 61, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        self.plate_number.setFont(font)
+        self.plate_number.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.plate_number.setObjectName("plate_number")
+        self.select_plate_OK = QtWidgets.QPushButton(Ask_plate)
+        self.select_plate_OK.setGeometry(QtCore.QRect(90, 30, 71, 51))
+        self.select_plate_OK.setStyleSheet("background-color: rgb(89, 255, 0);")
+        self.select_plate_OK.setObjectName("select_plate_OK")
+        self.select_plate_OK_pressed = QtGui.QAction(Ask_plate)
+        self.select_plate_OK_pressed.setObjectName("select_plate_OK_pressed")
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(Ask_plate)
+        QtCore.QMetaObject.connectSlotsByName(Ask_plate)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, Ask_plate):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.OKButton.setText(_translate("Dialog", "OK"))
-        self.Openfile.setText(_translate("Dialog", "PushButton"))
-        self.File_name.setText(_translate("Dialog", "TextLabel"))
+        Ask_plate.setWindowTitle(_translate("Ask_plate", "Dialog"))
+        self.plate_number_lable_text.setText(_translate("Ask_plate", "Введите номер пластины"))
+        self.select_plate_OK.setText(_translate("Ask_plate", "OK"))
+        self.select_plate_OK_pressed.setText(_translate("Ask_plate", "plate_selected"))
+        self.select_plate_OK_pressed.setToolTip(_translate("Ask_plate", "<html><head/><body><p>Select plate and press OK</p></body></html>"))
+        self.select_plate_OK_pressed.setShortcut(_translate("Ask_plate", "Return"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
+    Ask_plate = QtWidgets.QDialog()
+    ui = Ui_Ask_plate()
+    ui.setupUi(Ask_plate)
+    Ask_plate.show()
     sys.exit(app.exec())
