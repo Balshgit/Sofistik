@@ -1,15 +1,7 @@
-from pathlib import Path
-
-from PyQt6.QtWidgets import QFileDialog
+from PyQt6 import QtGui
 
 from main import main
-from sofistik.settings import SOFISTIK_YEAR
-
-from sofistik.sofistik_discover import Sofistik
-from sofistik.utils import logger
-from sofistik.sof_windows.windows import MainWindowUI, AskPlateUI
-
-from PyQt6 import QtGui, QtWidgets
+from sofistik.sof_windows.windows import MainWindowUI
 
 
 class SofistikUI(MainWindowUI):
@@ -30,5 +22,3 @@ class SofistikUI(MainWindowUI):
 
     def plate_number_setter(self, text: str):
         self.plate_group.setText(text)
-
-

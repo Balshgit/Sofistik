@@ -1,9 +1,6 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-from sofistik.sofistik_data_objects import get_plate_group
 from sofistik.sofistik_discover import Sofistik
-
-from sofistik.utils import logger
 
 
 class MainWindowUI(object):
@@ -111,5 +108,3 @@ class AskPlateUI(object):
         self.select_plate_OK_pressed.setToolTip(
             _translate("Ask_plate", "<html><head/><body><p>Select plate and press OK</p></body></html>"))
         self.select_plate_OK_pressed.setShortcut(_translate("Ask_plate", "Return"))
-
-

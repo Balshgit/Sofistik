@@ -1,16 +1,18 @@
+from pathlib import Path
 from typing import List
+
 import sofistik.sof.sofistik_daten as sof_struct
-from sofistik.utils import write_to_file, read_data_from_txt, create_image, logger
-from sofistik.sofistik_discover import Sofistik
 from sofistik.settings import SOFISTIK_YEAR
+from sofistik.sofistik_discover import Sofistik
+from sofistik.utils import read_data_from_txt, create_image, logger
 
 
-def quad_dict_from_db(sofistik_year: int, db_path: str) -> dict:
-    sof = Sofistik(sofistik_year=sofistik_year, filename=fr'{db_path}')
+def quad_dict_from_db(sofistik_year: int, db_path: Path) -> dict:
+    sof = Sofistik(sofistik_year=sofistik_year, filename=db_path)
 
     quads = sof.get_data(database_object=getattr(sof_struct, 'cgar_elnr'), obj_db_index=32,
-                                  obj_db_index_sub_number=1, args=['m_nr',
-                                                                   ])
+                         obj_db_index_sub_number=1, args=['m_nr',
+                                                          ])
     for quad in quads:
         for item in quad:
             logger.info(list(item))
@@ -21,7 +23,7 @@ def quad_dict_from_db(sofistik_year: int, db_path: str) -> dict:
                                    'm_node[2]',
                                    'm_node[3]',
                                    ])
-    #logger.info(quad_data)
+    # logger.info(quad_data)
 
     cnode_data = sof.get_data(database_object=getattr(sof_struct, 'cnode'), obj_db_index=20, obj_db_index_sub_number=0,
                               args=['m_nr',
@@ -56,7 +58,7 @@ def quad_dict_from_db(sofistik_year: int, db_path: str) -> dict:
         tuple_nodes_coords = node_coords_to_tuple(nodes)
 
         quad_dict[quad_number] = tuple_nodes_coords
-        #logger.info(f'{quad_number}: {tuple_nodes_coords}')
+        # logger.info(f'{quad_number}: {tuple_nodes_coords}')
 
     return quad_dict
 
@@ -70,8 +72,7 @@ def quad_dict_from_file(filename: str) -> dict:
     return quad_dict
 
 
-def main(filepath: str) -> None:
-
+def main(filepath: Path) -> None:
     # Read data
     # 'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
     quad_dict = quad_dict_from_db(sofistik_year=SOFISTIK_YEAR, db_path=filepath)
@@ -82,4 +83,4 @@ def main(filepath: str) -> None:
 
 
 if __name__ == '__main__':
-    main(r'C:\Users\Balsh\PycharmProjects\Sofistik_project\db\Test.cdb')
+    main(Path(r'C:\Users\Balsh\PycharmProjects\Sofistik_project\db\Test.cdb'))

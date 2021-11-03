@@ -1,22 +1,21 @@
 from typing import List
+
 import sofistik.sof.sofistik_daten as sof_struct
-from .utils import logger
 from .sofistik_discover import Sofistik
+from .utils import logger
 
 
 def get_plate_group(sofistik: Sofistik, db_index: int) -> str:
-
     cgar_data = sofistik.get_data(database_object=getattr(sof_struct, 'cgar'), obj_db_index=32,
-                             obj_db_index_sub_number=db_index, args=['m_nog'])
+                                  obj_db_index_sub_number=db_index, args=['m_nog'])
     logger.info(f'Plate group is {cgar_data[0][0]}')
     return cgar_data[0][0]
 
 
 def quad_dict_from_db(sofistik: Sofistik, db_index: int) -> dict:
-
     quads = sofistik.get_data(database_object=getattr(sof_struct, 'cgar_elnr'), obj_db_index=32,
-                                  obj_db_index_sub_number=db_index, args=['m_nr',
-                                                                          ])
+                              obj_db_index_sub_number=db_index, args=['m_nr',
+                                                                      ])
 
     quad_data = sofistik.get_data(database_object=getattr(sof_struct, 'cquad'), obj_db_index=200,
                                   obj_db_index_sub_number=0, args=['m_nr',
