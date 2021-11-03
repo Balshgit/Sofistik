@@ -1,7 +1,7 @@
 from PyQt6 import QtGui
 
 from sofistik.sofistik_data_objects import quad_dict_from_db
-from sofistik.sof_windows.windows import MainWindowUI
+from sofistik.sof_windows.pyqt_windows import MainWindowUI
 
 
 class SofistikUI(MainWindowUI):
