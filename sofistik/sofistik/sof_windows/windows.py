@@ -96,6 +96,8 @@ class AskPlateUI(object):
         self.select_plate_OK_pressed = QtGui.QAction(self.ask_plate)
         self.select_plate_OK_pressed.setObjectName("select_plate_OK_pressed")
 
+        self.select_plate_OK.clicked.connect(self.ask_plate.hide)
+
         self.retranslateUi(self.ask_plate)
         QtCore.QMetaObject.connectSlotsByName(self.ask_plate)
 
