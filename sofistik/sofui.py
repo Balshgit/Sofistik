@@ -109,6 +109,7 @@ class Ui_Ask_plate(object):
         self.select_plate_OK_pressed.setObjectName("select_plate_OK_pressed")
         self.select_plate_OK.clicked.connect(self.plate_selected)
         self.select_plate_OK.clicked.connect(lambda: Ask_plate.hide())
+        SofistikUI.plate_number_setter
 
         self.retranslateUi(Ask_plate)
         QtCore.QMetaObject.connectSlotsByName(Ask_plate)
@@ -124,7 +125,8 @@ class Ui_Ask_plate(object):
         self.select_plate_OK_pressed.setShortcut(_translate("Ask_plate", "Return"))
 
     def plate_selected(self):
-        self.plate_group = get_plate_group(self.sofistik, int(self.plate_number.text()))
+        plate_group = get_plate_group(self.sofistik, int(self.plate_number.text()))
+        SofistikUI.plate_number_setter(plate_group)
 
 
 class SofistikUI(Ui_MainWindow):
@@ -158,6 +160,9 @@ class SofistikUI(Ui_MainWindow):
         self.ask_plate_number = Ui_Ask_plate(self.sofistik)
         self.ask_plate_number.setupUi(self.ask_plate_number_dialog)
         self.ask_plate_number_dialog.show()
+
+    def plate_number_setter(self, text: str):
+        self.plate_group.setText(text)
 
 
 if __name__ == "__main__":
