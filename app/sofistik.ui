@@ -1,79 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>911</width>
-    <height>539</height>
+    <width>916</width>
+    <height>617</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>MainWindow</string>
   </property>
-  <widget class="QPushButton" name="OKButton">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>10</y>
-     <width>141</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(89, 255, 0);</string>
-   </property>
-   <property name="text">
-    <string>OK</string>
-   </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="db_name">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="OKButton">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>20</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(89, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>OK</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="plate_picture">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>130</y>
+      <width>911</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../sofistik/result/test_image_from_python.bmp</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="plate_group">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>100</y>
-     <width>911</width>
-     <height>441</height>
+     <y>0</y>
+     <width>916</width>
+     <height>22</height>
     </rect>
    </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>../sofistik/result/test_image_from_python.bmp</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_database"/>
+    <addaction name="separator"/>
+    <addaction name="actionexit"/>
+   </widget>
+   <widget class="QMenu" name="menuhelp">
+    <property name="title">
+     <string>help</string>
+    </property>
+    <addaction name="actionabout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuhelp"/>
   </widget>
-  <widget class="QPushButton" name="Openfile">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>10</y>
-     <width>341</width>
-     <height>51</height>
-    </rect>
-   </property>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_database">
    <property name="text">
-    <string>PushButton</string>
+    <string>Open database...</string>
    </property>
-  </widget>
-  <widget class="QLabel" name="File_name">
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>20</y>
-     <width>201</width>
-     <height>31</height>
-    </rect>
-   </property>
+  </action>
+  <action name="actionabout">
    <property name="text">
-    <string>TextLabel</string>
+    <string>about</string>
    </property>
-  </widget>
+  </action>
+  <action name="actionexit">
+   <property name="text">
+    <string>exit</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

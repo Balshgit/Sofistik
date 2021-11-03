@@ -9,66 +9,165 @@ from pathlib import Path
 from PyQt6.QtWidgets import QFileDialog, QWidget
 
 from main import main
+from sofistik.settings import SOFISTIK_YEAR
+from sofistik.sofistik_data_objects import get_plate_group
+from sofistik.sofistik_discover import Sofistik
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(QWidget):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(790, 470)
-
-        self.OKButton = QtWidgets.QPushButton(Dialog)
-        self.OKButton.setGeometry(QtCore.QRect(150, 10, 141, 61))
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(916, 617)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.db_name = QtWidgets.QLabel(self.centralwidget)
+        self.db_name.setGeometry(QtCore.QRect(20, 10, 150, 20))
+        self.db_name.setText("")
+        self.db_name.setObjectName("db_name")
+        self.OKButton = QtWidgets.QPushButton(self.centralwidget)
+        self.OKButton.setGeometry(QtCore.QRect(640, 20, 141, 61))
         self.OKButton.setStyleSheet("background-color: rgb(89, 255, 0);")
         self.OKButton.setObjectName("OKButton")
+        self.plate_picture = QtWidgets.QLabel(self.centralwidget)
+        self.plate_picture.setGeometry(QtCore.QRect(0, 130, 911, 441))
+        self.plate_picture.setText("")
+        self.plate_picture.setPixmap(QtGui.QPixmap("../sofistik/result/test_image_from_python.bmp"))
+        self.plate_picture.setScaledContents(True)
+        self.plate_picture.setObjectName("plate_picture")
+        self.plate_group = QtWidgets.QLabel(self.centralwidget)
+        self.plate_group.setGeometry(QtCore.QRect(160, 10, 150, 20))
+        self.plate_group.setText("")
+        self.plate_group.setObjectName("plate_group")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 916, 22))
+        self.menubar.setObjectName("menubar")
+        self.menuFile = QtWidgets.QMenu(self.menubar)
+        self.menuFile.setObjectName("menuFile")
+        self.menuhelp = QtWidgets.QMenu(self.menubar)
+        self.menuhelp.setObjectName("menuhelp")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.actionOpen_database = QtGui.QAction(MainWindow)
+        self.actionOpen_database.setObjectName("actionOpen_database")
+        self.actionabout = QtGui.QAction(MainWindow)
+        self.actionabout.setObjectName("actionabout")
+        self.actionexit = QtGui.QAction(MainWindow)
+        self.actionexit.setObjectName("actionexit")
+        self.menuFile.addAction(self.actionOpen_database)
+        self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actionexit)
+        self.menuhelp.addAction(self.actionabout)
+        self.menubar.addAction(self.menuFile.menuAction())
+        self.menubar.addAction(self.menuhelp.menuAction())
 
-        self.Openfile = QtWidgets.QPushButton(Dialog)
-        self.Openfile.setGeometry(QtCore.QRect(310, 10, 341, 51))
-        self.Openfile.setObjectName("Openfile")
-        self.Openfile.clicked.connect(self.open_DB)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.File_name = QtWidgets.QLabel(Dialog)
-        self.File_name.setGeometry(QtCore.QRect(670, 20, 201, 31))
-        self.File_name.setObjectName("File_name")
-
-        self.pic = QtWidgets.QLabel(Dialog)
-        self.pic.setGeometry(QtCore.QRect(0, 90, 790, 380))
-
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
-        self.button_pushed()
-
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.OKButton.setText(_translate("Dialog", "OK"))
-        self.Openfile.setText(_translate("Dialog", "Open Database file"))
-        self.File_name.setText(_translate("Dialog", "File name"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.OKButton.setText(_translate("MainWindow", "OK"))
+        self.menuFile.setTitle(_translate("MainWindow", "File"))
+        self.menuhelp.setTitle(_translate("MainWindow", "help"))
+        self.actionOpen_database.setText(_translate("MainWindow", "Open database..."))
+        self.actionabout.setText(_translate("MainWindow", "about"))
+        self.actionexit.setText(_translate("MainWindow", "exit"))
+
+
+class Ui_Ask_plate(object):
+
+    def __init__(self, sofistik: Sofistik):
+        self.sofistik = sofistik
+        self.plate_group = None
+
+    def setupUi(self, Ask_plate):
+        Ask_plate.setObjectName("Ask_plate")
+        Ask_plate.setEnabled(True)
+        Ask_plate.resize(169, 94)
+        self.plate_number_lable_text = QtWidgets.QLabel(Ask_plate)
+        self.plate_number_lable_text.setGeometry(QtCore.QRect(10, 10, 161, 20))
+        self.plate_number_lable_text.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.plate_number_lable_text.setObjectName("plate_number_lable_text")
+        self.plate_number = QtWidgets.QSpinBox(Ask_plate)
+        self.plate_number.setGeometry(QtCore.QRect(20, 40, 61, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        self.plate_number.setFont(font)
+        self.plate_number.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.plate_number.setObjectName("plate_number")
+        self.select_plate_OK = QtWidgets.QPushButton(Ask_plate)
+        self.select_plate_OK.setGeometry(QtCore.QRect(100, 40, 51, 31))
+        self.select_plate_OK.setStyleSheet("background-color: rgb(89, 255, 0);")
+        self.select_plate_OK.setObjectName("select_plate_OK")
+        self.select_plate_OK_pressed = QtGui.QAction(Ask_plate)
+        self.select_plate_OK_pressed.setObjectName("select_plate_OK_pressed")
+        self.select_plate_OK.clicked.connect(self.plate_selected)
+        self.select_plate_OK.clicked.connect(lambda: Ask_plate.hide())
+
+        self.retranslateUi(Ask_plate)
+        QtCore.QMetaObject.connectSlotsByName(Ask_plate)
+
+    def retranslateUi(self, Ask_plate):
+        _translate = QtCore.QCoreApplication.translate
+        Ask_plate.setWindowTitle(_translate("Ask_plate", "Dialog"))
+        self.plate_number_lable_text.setText(_translate("Ask_plate", "Введите номер пластины"))
+        self.select_plate_OK.setText(_translate("Ask_plate", "OK"))
+        self.select_plate_OK_pressed.setText(_translate("Ask_plate", "plate_selected"))
+        self.select_plate_OK_pressed.setToolTip(
+            _translate("Ask_plate", "<html><head/><body><p>Select plate and press OK</p></body></html>"))
+        self.select_plate_OK_pressed.setShortcut(_translate("Ask_plate", "Return"))
+
+    def plate_selected(self):
+        self.plate_group = get_plate_group(self.sofistik, int(self.plate_number.text()))
+
+
+class SofistikUI(Ui_MainWindow):
+
+    def __init__(self):
+        self.sofistik = None
+        self.database = None
+        self.ask_plate_number = None
+
+    def after_setup_ui(self):
+        self.actionOpen_database.triggered.connect(self.open_db)
+        self.button_pushed()
 
     def button_pushed(self):
         self.OKButton.clicked.connect(lambda: self.action())
 
     def action(self):
-        main(self.Openfile.file)
-        self.pic.setPixmap(QtGui.QPixmap("./result/test_image_from_python.bmp"))
-        self.pic.setScaledContents(True)
-        self.pic.setObjectName("label")
+        self.plate_group.setText(f'Plate group {self.ask_plate_number.plate_group}')
+        main(self.database)
+        self.plate_picture.setPixmap(QtGui.QPixmap("./result/test_image_from_python.bmp"))
+        self.plate_picture.setScaledContents(True)
+        self.plate_picture.setObjectName("label")
 
-    def open_DB(self):
-        file_name, _ = QFileDialog.getOpenFileName(self, caption='Open database file',
-                                                   filter='Db files [.cdb, .txt] (*.cdb *.txt)')
-        self.Openfile.file = Path(file_name)
-        self.File_name.setText(self.Openfile.file.name)
+    def open_db(self):
+        file_name, _ = QFileDialog.getOpenFileName(caption='Open database file',
+                                                   filter='Db files (*.cdb *.txt)')
+        self.database = Path(file_name)
+        self.db_name.setText(f'Data base: {self.database.name}')
+        self.sofistik = Sofistik(sofistik_year=SOFISTIK_YEAR, filename=self.database)
+        self.ask_plate_number_dialog = QtWidgets.QDialog()
+        self.ask_plate_number = Ui_Ask_plate(self.sofistik)
+        self.ask_plate_number.setupUi(self.ask_plate_number_dialog)
+        self.ask_plate_number_dialog.show()
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
+    MainWindow = QtWidgets.QMainWindow()
+    ui = SofistikUI()
+    ui.setupUi(MainWindow)
+    ui.after_setup_ui()
+    MainWindow.show()
     sys.exit(app.exec())
 
 # Timer app

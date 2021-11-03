@@ -6,11 +6,12 @@ import os               # for the environment variable necessary, this is a grea
 import re
 from ctypes import *    # read the functions from the cdb
 from .utils import logger
+from pathlib import Path
 
 
 class Sofistik:
 
-    def __init__(self, sofistik_year: int, filename: str) -> None:
+    def __init__(self, sofistik_year: int, filename: Path) -> None:
 
         os.add_dll_directory(fr'C:\Program Files\SOFiSTiK\{sofistik_year}\SOFiSTiK {sofistik_year}\interfaces\64bit')
         os.add_dll_directory(fr'C:\Program Files\SOFiSTiK\{sofistik_year}\SOFiSTiK {sofistik_year}')
