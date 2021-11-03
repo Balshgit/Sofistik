@@ -1,3 +1,4 @@
+import copy
 from pathlib import Path
 from typing import List
 
@@ -11,11 +12,11 @@ def quad_dict_from_db(sofistik_year: int, db_path: Path) -> dict:
     sof = Sofistik(sofistik_year=sofistik_year, filename=db_path)
 
     quads = sof.get_data(database_object=getattr(sof_struct, 'cgar_elnr'), obj_db_index=32,
-                         obj_db_index_sub_number=1, args=['m_nr',
+                         obj_db_index_sub_number=2, args=['m_nr',
                                                           ])
-    for quad in quads:
-        for item in quad:
-            logger.info(list(item))
+    quads_numbers = range(int(quads[0][0][0]), -(quads[0][0][1]) + 1)
+    logger.info(quads_numbers)
+
     quad_data = sof.get_data(database_object=getattr(sof_struct, 'cquad'), obj_db_index=200, obj_db_index_sub_number=00,
                              args=['m_nr',
                                    'm_node[0]',
@@ -30,10 +31,6 @@ def quad_dict_from_db(sofistik_year: int, db_path: Path) -> dict:
                                     'm_xyz[0]',
                                     'm_xyz[1]',
                                     ])
-
-    cgar_data = sof.get_data(database_object=getattr(sof_struct, 'cgar'), obj_db_index=32, obj_db_index_sub_number=2,
-                             args=['m_nog'])
-    logger.info(cgar_data[0])
 
     # Create dict with node number and it coords
     cnodes_dict = dict()
@@ -83,4 +80,5 @@ def main(filepath: Path) -> None:
 
 
 if __name__ == '__main__':
-    main(Path(r'C:\Users\Balsh\PycharmProjects\Sofistik_project\db\Test.cdb'))
+    #main(Path(r'C:\Users\Balsh\PycharmProjects\Sofistik_project\db\Test.cdb'))
+    main(Path(r'C:\Users\Balsh\Downloads\001_K2_1_HM_STR_Analysis_bannaia.cdb'))

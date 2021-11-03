@@ -15,7 +15,7 @@ class MainUI(SofistikUI):
 
     def after_setup_ui(self):
         self.actionOpen_database.triggered.connect(self.open_db)
-        self.button_pushed()
+        # self.button_pushed()
 
     def open_db(self):
         file_name, _ = QFileDialog.getOpenFileName(caption='Open database file',
@@ -43,7 +43,8 @@ class PlateSelect(AskPlateUI):
 
         plate_group = get_plate_group(self.sofistik, int(self.plate_number.text()))
         try:
-            ui.plate_number_setter(f'Plate group: {plate_group}')
+            ui.plate_group_setter(f'Plate group: {plate_group}')
+            ui.action(int(self.plate_number.text()))
         except Exception as e:
             logger.error(e)
 

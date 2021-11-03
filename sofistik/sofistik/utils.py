@@ -60,10 +60,10 @@ def create_image(quad: dict, image_name: str) -> None:
         font = ImageFont.truetype(font="fonts/Roboto-Thin.ttf", size=fontsize)
 
         # draw result
-        draw.polygon(rectangle, fill=(randint(0, 255), randint(0, 255), randint(0, 255)), outline='yellow')
-        # draw.polygon(rectangle, fill='green', outline='yellow')
+        # draw.polygon(rectangle, fill=(randint(0, 255), randint(0, 255), randint(0, 255)), outline='yellow')
+        draw.polygon(rectangle, outline='black')
 
-        draw.text((text_x, text_y), str(quad_number), font=font, fill='yellow')
+        draw.text((text_x, text_y), str(quad_number), font=font, fill='black')
     img.save(image_name)
 
 
