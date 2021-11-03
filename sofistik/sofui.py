@@ -9,6 +9,9 @@ from pathlib import Path
 from PyQt6.QtWidgets import QFileDialog, QWidget
 
 from main import main
+from sofistik.settings import SOFISTIK_YEAR
+from sofistik.sofistik_data_objects import get_plate_group
+from sofistik.sofistik_discover import Sofistik
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
@@ -17,12 +20,11 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(916, 617)
-
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-
         self.db_name = QtWidgets.QLabel(self.centralwidget)
-        self.db_name.setGeometry(QtCore.QRect(20, 10, 81, 31))
+        self.db_name.setGeometry(QtCore.QRect(20, 10, 150, 20))
+        self.db_name.setText("")
         self.db_name.setObjectName("db_name")
         self.OKButton = QtWidgets.QPushButton(self.centralwidget)
         self.OKButton.setGeometry(QtCore.QRect(640, 20, 141, 61))
@@ -34,6 +36,10 @@ class Ui_MainWindow(object):
         self.plate_picture.setPixmap(QtGui.QPixmap("../sofistik/result/test_image_from_python.bmp"))
         self.plate_picture.setScaledContents(True)
         self.plate_picture.setObjectName("plate_picture")
+        self.plate_group = QtWidgets.QLabel(self.centralwidget)
+        self.plate_group.setGeometry(QtCore.QRect(160, 10, 150, 20))
+        self.plate_group.setText("")
+        self.plate_group.setObjectName("plate_group")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 916, 22))
@@ -65,7 +71,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.db_name.setText(_translate("MainWindow", "TextLabel"))
         self.OKButton.setText(_translate("MainWindow", "OK"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuhelp.setTitle(_translate("MainWindow", "help"))
@@ -75,6 +80,10 @@ class Ui_MainWindow(object):
 
 
 class Ui_Ask_plate(object):
+
+    def __init__(self, sofistik: Sofistik):
+        self.sofistik = sofistik
+        self.plate_group = None
 
     def setupUi(self, Ask_plate):
         Ask_plate.setObjectName("Ask_plate")
@@ -93,11 +102,12 @@ class Ui_Ask_plate(object):
         self.plate_number.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.plate_number.setObjectName("plate_number")
         self.select_plate_OK = QtWidgets.QPushButton(Ask_plate)
-        self.select_plate_OK.setGeometry(QtCore.QRect(90, 30, 71, 51))
+        self.select_plate_OK.setGeometry(QtCore.QRect(100, 40, 51, 31))
         self.select_plate_OK.setStyleSheet("background-color: rgb(89, 255, 0);")
         self.select_plate_OK.setObjectName("select_plate_OK")
         self.select_plate_OK_pressed = QtGui.QAction(Ask_plate)
         self.select_plate_OK_pressed.setObjectName("select_plate_OK_pressed")
+        self.select_plate_OK.clicked.connect(self.plate_selected)
         self.select_plate_OK.clicked.connect(lambda: Ask_plate.hide())
 
         self.retranslateUi(Ask_plate)
@@ -113,10 +123,14 @@ class Ui_Ask_plate(object):
             _translate("Ask_plate", "<html><head/><body><p>Select plate and press OK</p></body></html>"))
         self.select_plate_OK_pressed.setShortcut(_translate("Ask_plate", "Return"))
 
+    def plate_selected(self):
+        self.plate_group = get_plate_group(self.sofistik, int(self.plate_number.text()))
+
 
 class SofistikUI(Ui_MainWindow):
 
     def __init__(self):
+        self.sofistik = None
         self.database = None
         self.ask_plate_number = None
 
@@ -128,7 +142,7 @@ class SofistikUI(Ui_MainWindow):
         self.OKButton.clicked.connect(lambda: self.action())
 
     def action(self):
-        print(self.ask_plate_number.plate_number.text())
+        self.plate_group.setText(f'Plate group {self.ask_plate_number.plate_group}')
         main(self.database)
         self.plate_picture.setPixmap(QtGui.QPixmap("./result/test_image_from_python.bmp"))
         self.plate_picture.setScaledContents(True)
@@ -136,11 +150,12 @@ class SofistikUI(Ui_MainWindow):
 
     def open_db(self):
         file_name, _ = QFileDialog.getOpenFileName(caption='Open database file',
-                                                   filter='Db files [.cdb, .txt] (*.cdb *.txt)')
+                                                   filter='Db files (*.cdb *.txt)')
         self.database = Path(file_name)
-        self.db_name.setText(self.database.name)
+        self.db_name.setText(f'Data base: {self.database.name}')
+        self.sofistik = Sofistik(sofistik_year=SOFISTIK_YEAR, filename=self.database)
         self.ask_plate_number_dialog = QtWidgets.QDialog()
-        self.ask_plate_number = Ui_Ask_plate()
+        self.ask_plate_number = Ui_Ask_plate(self.sofistik)
         self.ask_plate_number.setupUi(self.ask_plate_number_dialog)
         self.ask_plate_number_dialog.show()
 
