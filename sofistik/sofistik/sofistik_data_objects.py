@@ -4,7 +4,7 @@ from .utils import logger
 from .sofistik_discover import Sofistik
 
 
-def get_plate_group(sofistik: Sofistik, db_index: int) -> dict:
+def get_plate_group(sofistik: Sofistik, db_index: int) -> str:
 
     cgar_data = sofistik.get_data(database_object=getattr(sof_struct, 'cgar'), obj_db_index=32,
                              obj_db_index_sub_number=db_index, args=['m_nog'])

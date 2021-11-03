@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 def hello():
     print("Hi")
     return "Hello World"
@@ -17,10 +20,23 @@ def search(item: int, list_to_check: list) -> list:
         if item in diapason:
             return diapason
 
+
 import re
+
 ip = '192.168.88.147'
 pattern = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
 
 if re.match(pattern, ip):
     print(True)
 
+from collections import Counter
+S = input('')
+J = input('')
+
+total = 0
+counter = Counter(J)
+
+for char in set(S):
+    total += counter[char]
+
+print(total)
