@@ -4,11 +4,12 @@ import sys
 import time
 from functools import wraps
 from random import randint
+import sqlite3
 
 from PIL import Image, ImageDraw, ImageFont
 
 logger = logging.getLogger('main_logger')
-formatter = logging.Formatter(datefmt="%Y.%m.%d %H:%M:%S", fmt='%(asctime)s | func name: %(funcName)s |'
+formatter = logging.Formatter(datefmt="%Y.%m.%d %H:%M:%S", fmt='%(asctime)s | %(levelname)s | func name: %(funcName)s |'
                                                                ' message: %(message)s')
 # fmt='%(asctime)s | %(levelname)s | process: %(process)d | module name: %(name)s | '
 #     'func name: %(funcName)s | line number: %(lineno)s | message: %(message)s',)

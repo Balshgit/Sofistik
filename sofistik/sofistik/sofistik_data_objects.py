@@ -1,8 +1,9 @@
 from typing import List
 
 import sofistik.sof.sofistik_daten as sof_struct
+from sofistik.utils import create_image, logger
 from .sofistik_discover import Sofistik
-from sofistik.utils import read_data_from_txt, create_image, logger
+
 
 
 def get_plate_group(sofistik: Sofistik, db_index: int) -> str:
@@ -43,7 +44,7 @@ def quad_dict_from_db(sofistik: Sofistik, db_index: int) -> dict:
     cnodes_dict = dict()
     for node_item in cnode_data:
         cnode_number = node_item[0]
-        coords = [round(node_item[i], 3) * 300 for i in range(1, len(node_item))]
+        coords = [round(node_item[i], 1) * 300 for i in range(1, len(node_item))]
         cnodes_dict[cnode_number] = coords
 
     # Get list of nodes coordinates from list of nodes
@@ -56,17 +57,14 @@ def quad_dict_from_db(sofistik: Sofistik, db_index: int) -> dict:
     # Create dict with quad number and list of it nodes
     quad_dict = dict()
     for quad_item in quad_data:
-        if quad_item[0] in quads_numbers:  # if quad number in quads in this area add quad
-            quad_number = quad_item[0]
+        quad_number = quad_item[0]
+        nodes = [quad_item[i] for i in range(1, len(quad_item))]
+        tuple_nodes_coords = node_coords_to_tuple(nodes)
+        quad_dict[quad_number] = tuple_nodes_coords
 
-            nodes = [quad_item[i] for i in range(1, len(quad_item))]
-            tuple_nodes_coords = node_coords_to_tuple(nodes)
-
-            quad_dict[quad_number] = tuple_nodes_coords
-            logger.info(f'{quad_number}: {tuple_nodes_coords}')
+        if quad_number in quads_numbers:  # if quad number in quads in this area add quad
+            quad_dict.pop(quad_number)
+            # logger.info(f'{quad_number}: {tuple_nodes_coords}')
 
     create_image(quad=quad_dict, image_name='result/test_image_from_python.bmp')
     return quad_dict
-
-
-

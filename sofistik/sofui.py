@@ -4,8 +4,8 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QFileDialog
 
 from sofistik.settings import SOFISTIK_YEAR
-from sofistik.sof_windows.sofistik_ui import SofistikUI
 from sofistik.sof_windows.pyqt_windows import AskPlateUI
+from sofistik.sof_windows.sofistik_ui import SofistikUI
 from sofistik.sofistik_data_objects import get_plate_group
 from sofistik.sofistik_discover import Sofistik
 from sofistik.utils import logger
@@ -51,6 +51,7 @@ class PlateSelect(AskPlateUI):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = MainUI()
