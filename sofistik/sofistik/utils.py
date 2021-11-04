@@ -49,11 +49,11 @@ def read_data_from_txt(filename: str) -> dict:
 
 
 @time_execute
-def create_image(quad: dict, image_name: str) -> None:
+def create_image(quad_dict: dict, image_name: str) -> None:
     img = Image.new('RGB', (1500, 500), (255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    quad = mirror_quad_by_y(quad)
+    quad = mirror_quad_by_y(quad_dict)
     for quad_number, rectangle in quad.items():
         # Prepare text
         fontsize = 15

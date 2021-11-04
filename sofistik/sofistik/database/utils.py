@@ -10,7 +10,11 @@ engine = create_engine(fr'sqlite:///{DATABASE_NAME}')
 
 
 def run_migrations() -> None:
+    """
+    Run alembic migrations
 
+    :return: Update database to last migration
+    """
     try:
         alembic_cfg = Config(r'.\sofistik\database\alembic\alembic.ini')
         command.stamp(alembic_cfg, "head")
@@ -19,4 +23,9 @@ def run_migrations() -> None:
 
 
 def create_database() -> None:
+    """
+    Create database with tables from models
+
+    :return: Insert tables in database
+    """
     Base.metadata.create_all(engine)

@@ -14,7 +14,14 @@ engine = create_engine(fr'sqlite:///{DATABASE_NAME}')
 session_factory = sessionmaker(bind=engine)
 
 
-def get_now(offset):
+def get_now(offset: int) -> datetime:
+    """
+    Return current time with offset in hours
+
+    :param offset: Set hours to offset from now
+
+    :return: Now date and time with chosen offset
+    """
     _offset = timezone(timedelta(hours=offset))
     now = datetime.now(_offset)
     return now
@@ -22,6 +29,20 @@ def get_now(offset):
 
 def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, area: int, group: int,
                              banding_moment_mxx: int, banding_moment_myy: int, banding_moment_mxy: int) -> None:
+    """
+    Add new quad or update it
+
+    :param update_obj: Set it True to update quad if it exists
+    :param quad_number: Quad number in database
+    :param nodes: List of quad nodes
+    :param area: Area which quad is belong
+    :param group: Group of objects
+    :param banding_moment_mxx: Quad moments by xx
+    :param banding_moment_myy: Quad moments by yy
+    :param banding_moment_mxy: Quad moments by xy
+
+    :return: Update or create quad instance
+    """
     try:
         with session_factory() as session:
             quad = Quads(quad_number=quad_number,
@@ -38,8 +59,8 @@ def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, a
             session.add(quad)
             session.commit()
     except IntegrityError:
-        logger.error(f'Quad {quad_number} already exists. Updating quad')
         if update_obj:
+            logger.error(f'Quad {quad_number} already exists. Updating quad')
             with session_factory() as session:
                 session.execute(update(Quads).where(Quads.quad_number == quad_number).
                                 values(node_0=str(nodes[0]),
@@ -52,9 +73,18 @@ def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, a
                                        banding_moment_myy=banding_moment_myy,
                                        banding_moment_mxy=banding_moment_mxy))
                 session.commit()
+    except Exception as e:
+        logger.error(f'Unexpected error {e}')
 
 
 def db_get_quad(quad_number: int) -> Any:
+    """
+    Get quad from db by its number
+
+    :param quad_number: quad number
+
+    :return: Quad object
+    """
     try:
         with session_factory() as session:
             quad = session.query(Quads).filter(Quads.quad_number == quad_number).one()

@@ -75,7 +75,7 @@ def main(filepath: Path) -> None:
     # quad_dict = quad_dict_from_file(filepath)#filename='result/rectangles.txt')
 
     # Draw rectangles!!!!
-    create_image(quad=quad_dict, image_name='result/test_image_from_python.bmp')
+    create_image(quad_dict=quad_dict, image_name='result/test_image_from_python.bmp')
 
 
 if __name__ == '__main__':

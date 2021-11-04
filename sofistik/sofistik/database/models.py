@@ -1,11 +1,11 @@
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import declarative_base
 
-
 Base = declarative_base()
 
 
 class Quads(Base):
+    """ Quad model for data base """
     __tablename__ = 'quads'
 
     id = Column(Integer, primary_key=True)
