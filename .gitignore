@@ -217,7 +217,7 @@ media/
 
 # File types:
 *.sqlite3
-# .db
+*.db
 
 
 # Configuration file with private data:
