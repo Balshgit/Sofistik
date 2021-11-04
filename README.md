@@ -10,6 +10,7 @@
 from git bash
 
     pyinstaller sofui.py
+    pyinstaller -F sofui.py -i /path/to/icon -w and no console
 
 
 ## Create migrations
@@ -24,6 +25,7 @@ Create table in alembic versions
 
 Run migrations
 
+    cd .\sofistik\sofistik\database\ # alembic root
     alembic --config .\alembic\alembic.ini upgrade head
 
 Downgrade migrations

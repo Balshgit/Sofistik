@@ -25,7 +25,10 @@ def upgrade():
                     sa.Column('node_2', sa.String, nullable=False),
                     sa.Column('node_3', sa.String, nullable=False),
                     sa.Column('area', sa.INTEGER, nullable=False),
-                    sa.Column('plate', sa.INTEGER, nullable=False)
+                    sa.Column('group', sa.INTEGER, nullable=False),
+                    sa.Column('banding_moment_mxx', sa.INTEGER, nullable=False),
+                    sa.Column('banding_moment_myy', sa.INTEGER, nullable=False),
+                    sa.Column('banding_moment_mxy', sa.INTEGER, nullable=False)
                     )
 
 

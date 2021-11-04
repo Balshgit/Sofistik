@@ -2,7 +2,7 @@ from PyQt6 import QtGui
 
 from sofistik.sof_windows.pyqt_windows import MainWindowUI
 from sofistik.sofistik_data_objects import quad_dict_from_db
-from sofistik.database.models import db_insert_or_update
+from sofistik.database.commands import db_insert_or_update_quad
 
 
 class SofistikUI(MainWindowUI):
@@ -19,8 +19,8 @@ class SofistikUI(MainWindowUI):
         quads = quad_dict_from_db(self.sofistik, db_index=db_index)
         plate_group = f'{self.plate_group.text()}'.replace('Plate group: ', '')
         for quad, nodes in quads.items():
-            db_insert_or_update(quad_number=quad, nodes=quads[quad], area=db_index,
-                                plate_number=int(plate_group))
+            db_insert_or_update_quad(quad_number=quad, nodes=quads[quad], area=db_index, group=int(plate_group),
+                                     banding_moment_mxx=0, banding_moment_myy=0, banding_moment_mxy=0)
         self.plate_picture.setPixmap(QtGui.QPixmap("./result/test_image_from_python.bmp"))
         self.plate_picture.setScaledContents(True)
         self.plate_picture.setObjectName("label")

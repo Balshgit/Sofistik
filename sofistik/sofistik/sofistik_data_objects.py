@@ -5,7 +5,6 @@ from sofistik.utils import create_image, logger
 from .sofistik_discover import Sofistik
 
 
-
 def get_plate_group(sofistik: Sofistik, db_index: int) -> str:
     cgar_data = sofistik.get_data(database_object=getattr(sof_struct, 'cgar'), obj_db_index=32,
                                   obj_db_index_sub_number=db_index, args=['m_nog',
@@ -44,7 +43,7 @@ def quad_dict_from_db(sofistik: Sofistik, db_index: int) -> dict:
     cnodes_dict = dict()
     for node_item in cnode_data:
         cnode_number = node_item[0]
-        coords = [round(node_item[i], 1) * 300 for i in range(1, len(node_item))]
+        coords = [round(node_item[i], 1) * 450 for i in range(1, len(node_item))]
         cnodes_dict[cnode_number] = coords
 
     # Get list of nodes coordinates from list of nodes
