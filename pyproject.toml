@@ -8,6 +8,8 @@ authors = ["Dmitry Afanasyev <Balshbox@gmail.com>"]
 python = "^3.9"
 Pillow = "^8.4.0"
 Pyqt6 = "6.2.0"
+sqlalchemy = "1.4.26"
+alembic = "1.7.4"
 
 [tool.poetry.dev-dependencies]
 

@@ -217,7 +217,9 @@ media/
 
 # File types:
 *.sqlite3
-# .db
+# sofistik.db
+*.db
+
 
 
 # Configuration file with private data:

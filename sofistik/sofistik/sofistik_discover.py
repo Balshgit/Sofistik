@@ -2,11 +2,12 @@
 # | Company:   SOFiSTiK AG                                                     |
 # | Version:   SOFiSTIK 2020                                                   |
 # +============================================================================+
-import os               # for the environment variable necessary, this is a great tool
+import os  # for the environment variable necessary, this is a great tool
 import re
-from ctypes import *    # read the functions from the cdb
-from .utils import logger
+from ctypes import *  # read the functions from the cdb
 from pathlib import Path
+
+from .utils import logger
 
 
 class Sofistik:
