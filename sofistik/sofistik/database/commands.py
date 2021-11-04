@@ -90,7 +90,7 @@ def db_get_quad(quad_number: int) -> Any:
             quad = session.query(Quads).filter(Quads.quad_number == quad_number).one()
         return quad
     except Exception as e:
-        logger.error(e)
+        logger.error(f'Cant get quad from DB. Reason: {e}')
 #
 #
 # def db_get_location(chat_id):
