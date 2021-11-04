@@ -1,7 +1,8 @@
 from datetime import datetime, timezone, timedelta
 from typing import Any
 
-from sqlalchemy import create_engine, update
+from sqlalchemy import create_engine
+from sqlalchemy import update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
 
@@ -19,7 +20,7 @@ def get_now(offset):
     return now
 
 
-def db_insert_or_update_quad(quad_number: int, nodes: tuple, area: int, group: int,
+def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, area: int, group: int,
                              banding_moment_mxx: int, banding_moment_myy: int, banding_moment_mxy: int) -> None:
     try:
         with session_factory() as session:
@@ -38,25 +39,26 @@ def db_insert_or_update_quad(quad_number: int, nodes: tuple, area: int, group: i
             session.commit()
     except IntegrityError:
         logger.error(f'Quad {quad_number} already exists. Updating quad')
-        with session_factory() as session:
-            session.execute(update(Quads).where(Quads.quad_number == quad_number).
-                            values(node_0=str(nodes[0]),
-                                   node_1=str(nodes[1]),
-                                   node_2=str(nodes[2]),
-                                   node_3=str(nodes[3]),
-                                   area=area,
-                                   group=group,
-                                   banding_moment_mxx=banding_moment_mxx,
-                                   banding_moment_myy=banding_moment_myy,
-                                   banding_moment_mxy=banding_moment_mxy))
-            session.commit()
+        if update_obj:
+            with session_factory() as session:
+                session.execute(update(Quads).where(Quads.quad_number == quad_number).
+                                values(node_0=str(nodes[0]),
+                                       node_1=str(nodes[1]),
+                                       node_2=str(nodes[2]),
+                                       node_3=str(nodes[3]),
+                                       area=area,
+                                       group=group,
+                                       banding_moment_mxx=banding_moment_mxx,
+                                       banding_moment_myy=banding_moment_myy,
+                                       banding_moment_mxy=banding_moment_mxy))
+                session.commit()
 
 
 def db_get_quad(quad_number: int) -> Any:
     try:
         with session_factory() as session:
             quad = session.query(Quads).filter(Quads.quad_number == quad_number).one()
-            return quad
+        return quad
     except Exception as e:
         logger.error(e)
 #

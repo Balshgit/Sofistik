@@ -9,7 +9,7 @@ from sofistik.sof_windows.sofistik_ui import SofistikUI
 from sofistik.sofistik_data_objects import get_plate_group
 from sofistik.sofistik_discover import Sofistik
 from sofistik.utils import logger
-from sofistik.database.utils import create_database
+from sofistik.database.utils import create_database, run_migrations
 from sofistik.settings import DATABASE_NAME
 
 
@@ -55,6 +55,7 @@ if __name__ == "__main__":
     database_file = Path(f'{DATABASE_NAME}')
     if not database_file.exists():
         create_database()
+        run_migrations()
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()

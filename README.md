@@ -10,7 +10,20 @@
 from git bash
 
     pyinstaller sofui.py
-    pyinstaller -F sofui.py -i /path/to/icon -w and no console
+
+-F - creates one exe
+
+-i - create app with icon /path/to/icon.ico
+
+-w - create app without console
+
+    pyinstaller -F -i icon.ico -w sofui.py
+    
+    
+
+    
+
+
 
 
 ## Create migrations
