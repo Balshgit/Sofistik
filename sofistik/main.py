@@ -4,11 +4,11 @@ from typing import List
 import sofistik.sof.sofistik_daten as sof_struct
 from sofistik.settings import SOFISTIK_YEAR
 from sofistik.sofistik_discover import Sofistik
-from sofistik.utils import read_data_from_txt, create_image, logger
+from sofistik.utils import read_data_from_txt, create_image, logger, write_to_file
 
 
-def quad_dict_from_db(sofistik_year: int, db_path: Path) -> dict:
-    sof = Sofistik(sofistik_year=sofistik_year, filename=db_path)
+def quad_dict_from_db(sofistik_year: int, filepath: Path) -> dict:
+    sof = Sofistik(sofistik_year=sofistik_year, filename=filepath)
 
     quads = sof.get_data(database_object=getattr(sof_struct, 'cgar_elnr'), obj_db_index=32,
                          obj_db_index_sub_number=2, args=['m_nr',
@@ -59,25 +59,21 @@ def quad_dict_from_db(sofistik_year: int, db_path: Path) -> dict:
     return quad_dict
 
 
-# # ------ Write data to a file and extract it back --------
-# write_to_file(data=quad_dict, filename='result/rectangles.txt')
+def from_db(filepath: Path) -> None:
+    quad_dict = quad_dict_from_db(sofistik_year=SOFISTIK_YEAR, filepath=filepath)
+    # write_to_file(data=quad_dict, filename='result/rectangles.txt')
+    create_image(quad_dict=quad_dict, image_name='result/test_image_from_python.bmp')  # Draw rectangles!!!!
 
 
-def quad_dict_from_file(filename: str) -> dict:
-    quad_dict = read_data_from_txt(filename)
-    return quad_dict
-
-
-def main(filepath: Path) -> None:
-    # Read data
-    # 'C:\Users\Balsh\PycharmProjects\sofistik\db\Test.cdb')
-    quad_dict = quad_dict_from_db(sofistik_year=SOFISTIK_YEAR, db_path=filepath)
-    # quad_dict = quad_dict_from_file(filepath)#filename='result/rectangles.txt')
-
-    # Draw rectangles!!!!
-    create_image(quad_dict=quad_dict, image_name='result/test_image_from_python.bmp')
+def from_txt(filepath: Path) -> None:
+    quad_dict = read_data_from_txt(filepath)
+    create_image(quad_dict=quad_dict, image_name='result/test_image_from_python.bmp')  # Draw rectangles!!!!
 
 
 if __name__ == '__main__':
-    #main(Path(r'C:\Users\Balsh\PycharmProjects\Sofistik_project\db\Test.cdb'))
-    main(Path(r'C:\Users\Balsh\Downloads\001_K2_1_HM_STR_Analysis_bannaia.cdb'))
+    try:
+        # from_txt(Path('result/rectangles.txt'))
+        from_db(Path(r'C:\Users\Balsh\PycharmProjects\Sofistik_project\db\Test.cdb'))
+        # from_db(Path(r'C:\Users\Balsh\Downloads\001_K2_1_HM_STR_Analysis_bannaia.cdb'))
+    except Exception as e:
+        logger.error(e)

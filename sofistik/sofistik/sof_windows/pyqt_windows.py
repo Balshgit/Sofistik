@@ -80,7 +80,7 @@ class MainWindowUI:
 
 
 class AskPlateUI:
-    """ Ask plate from PyQt6 \n
+    """ Ask plate area from PyQt6 \n
     label: area \n
     button: select_area_OK \n
     """

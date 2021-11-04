@@ -35,7 +35,7 @@ def quad_dict_from_db(sofistik: Sofistik, area: int) -> dict:
     # Get start and end numbers of quads and create range quads to check
     quads = sofistik.get_data(database_object=getattr(sof_struct, 'cgar_elnr'), obj_db_index=32,
                               obj_db_index_sub_number=area, args=['m_nr'])
-    quads_numbers = range(int(quads[0][0][0]), -(quads[0][0][1]) + 1)  # get list of quads belong to this area number
+    quads_in_this_area = range(int(quads[0][0][0]), -(quads[0][0][1]) + 1)  # get list of quads belong to this area
 
     # Get all quads from database
     quad_data = sofistik.get_data(database_object=getattr(sof_struct, 'cquad'), obj_db_index=200,
@@ -76,7 +76,7 @@ def quad_dict_from_db(sofistik: Sofistik, area: int) -> dict:
         quad_dict[quad_number] = tuple_nodes_coords
 
         # Filter quads only for this area
-        if quad_number in quads_numbers:
+        if quad_number not in quads_in_this_area:
             quad_dict.pop(quad_number)
             # logger.info(f'{quad_number}: {tuple_nodes_coords}')
     return quad_dict
