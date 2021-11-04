@@ -217,8 +217,8 @@ media/
 
 # File types:
 *.sqlite3
-.sofistik/sofistik.db
-# *.db
+# sofistik.db
+*.db
 
 
 
