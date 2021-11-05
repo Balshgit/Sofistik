@@ -28,7 +28,7 @@ def get_now(offset: int) -> datetime:
 
 
 def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, area: int, group: int,
-                             banding_moment_mxx: int, banding_moment_myy: int, banding_moment_mxy: int) -> None:
+                             bending_moment_mxx: int, bending_moment_myy: int, bending_moment_mxy: int) -> None:
     """
     Add new quad or update it
 
@@ -37,9 +37,9 @@ def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, a
     :param nodes: List of quad nodes
     :param area: Area which quad is belong
     :param group: Group of objects
-    :param banding_moment_mxx: Quad moments by xx
-    :param banding_moment_myy: Quad moments by yy
-    :param banding_moment_mxy: Quad moments by xy
+    :param bending_moment_mxx: Quad moments by xx
+    :param bending_moment_myy: Quad moments by yy
+    :param bending_moment_mxy: Quad moments by xy
 
     :return: Update or create quad instance
     """
@@ -52,9 +52,9 @@ def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, a
                          node_3=str(nodes[3]),
                          area=area,
                          group=group,
-                         banding_moment_mxx=banding_moment_mxx,
-                         banding_moment_myy=banding_moment_myy,
-                         banding_moment_mxy=banding_moment_mxy
+                         bending_moment_mxx=bending_moment_mxx,
+                         bending_moment_myy=bending_moment_myy,
+                         bending_moment_mxy=bending_moment_mxy
                          )
             session.add(quad)
             session.commit()
@@ -69,9 +69,9 @@ def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, a
                                        node_3=str(nodes[3]),
                                        area=area,
                                        group=group,
-                                       banding_moment_mxx=banding_moment_mxx,
-                                       banding_moment_myy=banding_moment_myy,
-                                       banding_moment_mxy=banding_moment_mxy))
+                                       bending_moment_mxx=bending_moment_mxx,
+                                       bending_moment_myy=bending_moment_myy,
+                                       bending_moment_mxy=bending_moment_mxy))
                 session.commit()
     except Exception as e:
         logger.error(f'Unexpected error {e}')
@@ -165,9 +165,9 @@ def db_get_quad(quad_number: int) -> Any:
 
 # test_quads = {}
 # test_quads[7770102] = ('(555, 777)', '(333, 22)', '(888, 555)', '(888, 222)')
-# db_insert_or_update_quad(quad_number=7770102, nodes=test_quads[7770102], area=102, group=7117, banding_moment_mxx=10,
-#                     banding_moment_myy=20, banding_moment_mxy=30)
-# print(db_get_quad(quad_number=560131))
+# db_insert_or_update_quad(quad_number=7770102, nodes=test_quads[7770102], area=102, group=7117, bending_moment_mxx=10,
+#                     bending_moment_myy=20, bending_moment_mxy=30)
+print(db_get_quad(quad_number=560131))
 # db_insert_reply_message(chat_id='1660356916', reply_message='asdasd')
 # db_update_location(chat_id='1660356916', location='lsdkjfldskj')
 # print(db_get_id('417070387'))

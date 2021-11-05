@@ -16,9 +16,9 @@ class Quads(Base):
     node_3 = Column(String, nullable=False)
     area = Column(Integer, nullable=False)
     group = Column(Integer, nullable=False)
-    banding_moment_mxx = Column(Integer, nullable=False)
-    banding_moment_myy = Column(Integer, nullable=False)
-    banding_moment_mxy = Column(Integer, nullable=False)
+    bending_moment_mxx = Column(Integer, nullable=False)
+    bending_moment_myy = Column(Integer, nullable=False)
+    bending_moment_mxy = Column(Integer, nullable=False)
 
     def __repr__(self):
         return f'Quad {self.quad_number}'

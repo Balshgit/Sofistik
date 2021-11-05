@@ -34,7 +34,7 @@ class SofistikUI(MainWindowUI):
         quads = quad_dict_from_db(self.sofistik, area=area)
         for quad, nodes in quads.items():
             db_insert_or_update_quad(update_obj=False, quad_number=quad, nodes=quads[quad], area=area, group=group,
-                                     banding_moment_mxx=0, banding_moment_myy=0, banding_moment_mxy=0)
+                                     bending_moment_mxx=0, bending_moment_myy=0, bending_moment_mxy=0)
 
         # Create image with quads
         create_image(quad_dict=quads, image_name='result/test_image_from_python.bmp')
