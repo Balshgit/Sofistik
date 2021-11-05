@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from PyQt6 import QtWidgets
-from PyQt6.QtWidgets import QFileDialog
+from PyQt6.QtWidgets import QFileDialog, QDialog
 
 from sofistik.settings import SOFISTIK_YEAR
 from sofistik.sof_windows.pyqt_windows import AskPlateUI
@@ -9,44 +9,57 @@ from sofistik.sof_windows.sofistik_ui import SofistikUI
 from sofistik.sofistik_data_objects import get_plate_group
 from sofistik.sofistik_discover import Sofistik
 from sofistik.utils import logger
-from sofistik.database.utils import create_database
+from sofistik.database.utils import create_database, run_migrations
 from sofistik.settings import DATABASE_NAME
 
 
 class MainUI(SofistikUI):
+    """Main window of program"""
 
-    def after_setup_ui(self):
+    def after_setup_ui(self) -> None:
+        """ Add action in File menu when database added """
+
         self.actionOpen_database.triggered.connect(self.open_db)
         # self.button_pushed()
 
-    def open_db(self):
+    def open_db(self) -> None:
+        """ Add and show new window with select area option """
+
         file_name, _ = QFileDialog.getOpenFileName(caption='Open database file',
                                                    filter='Db files (*.cdb *.txt)')
         self.database = Path(file_name)
         self.db_name.setText(f'Data base: {self.database.name}')
+
         self.sofistik = Sofistik(sofistik_year=SOFISTIK_YEAR, filename=self.database)
-        self.ask_plate_number_dialog = QtWidgets.QDialog()
-        self.ask_plate_number = PlateSelect(self.sofistik, self.ask_plate_number_dialog)
-        self.ask_plate_number.base_setup_ui()
-        self.ask_plate_number.after_setup_ui()
 
-        self.ask_plate_number_dialog.show()
+        # Add new area select window
+        ask_plate_number_dialog = QDialog()
+        self.ask_area_number = AreaSelect(self.sofistik, ask_plate_number_dialog)
+        self.ask_area_number.base_setup_ui()
+        self.ask_area_number.after_setup_ui()
+        ask_plate_number_dialog.show()
 
 
-class PlateSelect(AskPlateUI):
+class AreaSelect(AskPlateUI):
+    """ Ask area window """
 
     def __init__(self, sofistik: Sofistik, dialog):
         super().__init__(sofistik, dialog)
 
     def after_setup_ui(self):
-        self.select_plate_OK.clicked.connect(self.plate_selected)
+        """ Add select_area_OK button action """
+        self.select_area_OK.clicked.connect(self.area_selected)
 
-    def plate_selected(self):
-
-        plate_group = get_plate_group(self.sofistik, int(self.plate_number.text()))
+    def area_selected(self):
+        """
+        Get plate group and set it on main UI to plate_group_label \n
+        Extract quads from sofistik cdb, add it to SQL db and create image
+        """
+        area = int(self.area.text())
+        group = get_plate_group(self.sofistik, area)
         try:
-            ui.plate_group_setter(f'Plate group: {plate_group}')
-            ui.action(int(self.plate_number.text()))
+            ui.plate_group_setter(f'Plate group: {group}')
+            ui.action_on_group_chosen(area=area, group=group)
         except Exception as e:
             logger.error(e)
 
@@ -55,6 +68,7 @@ if __name__ == "__main__":
     database_file = Path(f'{DATABASE_NAME}')
     if not database_file.exists():
         create_database()
+        run_migrations()
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
