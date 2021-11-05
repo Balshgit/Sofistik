@@ -20,26 +20,29 @@ from git bash
     pyinstaller -F -i icon.ico -w sofui.py
     
     
-
-    
-
-
-
-
 ## Create migrations
 
 Init alembic
 
     alembic init alembic
 
+### If nix OS change backslash in alembic.ini
+
+*script_location = sofistik\database\alembic change to /sofistik/sofistik/database*
+
+    alembic --config sofistik/database/alembic/alembic.ini revision --autogenerate -m 'create_quads_table'
+    alembic --config sofistik/database/alembic/alembic.ini upgrade head
+
 Create table in alembic versions
     
-    alembic --config .\alembic\alembic.ini revision -m "create account table"
+    alembic --config .\sofistik\database\alembic\alembic.ini revision -m "create account table"
+    alembic --config .\sofistik\database\alembic\alembic.ini revision --autogenerate -m 'create_quads_table'
+
 
 Run migrations
 
-    cd .\sofistik\sofistik\database\ # alembic root
-    alembic --config .\alembic\alembic.ini upgrade head
+    cd .\sofistik\ # alembic root
+    alembic --config .\sofistik\database\alembic\alembic.ini upgrade head
 
 Downgrade migrations
     

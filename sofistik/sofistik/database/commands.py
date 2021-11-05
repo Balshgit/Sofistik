@@ -167,7 +167,7 @@ def db_get_quad(quad_number: int) -> Any:
 # test_quads[7770102] = ('(555, 777)', '(333, 22)', '(888, 555)', '(888, 222)')
 # db_insert_or_update_quad(quad_number=7770102, nodes=test_quads[7770102], area=102, group=7117, bending_moment_mxx=10,
 #                     bending_moment_myy=20, bending_moment_mxy=30)
-print(db_get_quad(quad_number=560131))
+# print(db_get_quad(quad_number=560131))
 # db_insert_reply_message(chat_id='1660356916', reply_message='asdasd')
 # db_update_location(chat_id='1660356916', location='lsdkjfldskj')
 # print(db_get_id('417070387'))
