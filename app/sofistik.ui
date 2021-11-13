@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>916</width>
-    <height>617</height>
+    <width>1254</width>
+    <height>712</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QLabel" name="db_name">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>111</width>
-      <height>51</height>
+      <x>590</x>
+      <y>110</y>
+      <width>16</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="text">
@@ -30,30 +30,20 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="OKButton">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>20</y>
-      <width>141</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(89, 255, 0);</string>
-    </property>
-    <property name="text">
-     <string>OK</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="plate_picture">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>130</y>
-      <width>911</width>
-      <height>441</height>
+      <x>590</x>
+      <y>220</y>
+      <width>651</width>
+      <height>431</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string/>
@@ -68,14 +58,70 @@
    <widget class="QLabel" name="plate_group">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>10</y>
-      <width>71</width>
-      <height>20</height>
+      <x>810</x>
+      <y>100</y>
+      <width>16</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>12</y>
+      <width>551</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontal_layout">
+     <item>
+      <widget class="QScrollArea" name="scroll_area">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>545</width>
+          <height>635</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLineEdit" name="lineEdit"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="OKButton">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>20</y>
+      <width>75</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(89, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>OK</string>
     </property>
    </widget>
   </widget>
@@ -84,8 +130,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>916</width>
-     <height>22</height>
+     <width>1254</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
