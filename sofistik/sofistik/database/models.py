@@ -2,6 +2,7 @@ import datetime
 
 from sqlalchemy import Column, String, Integer, ForeignKey, CHAR, DATETIME, INTEGER, Text
 from sqlalchemy.orm import declarative_base
+from sqlalchemy.sql.functions import current_timestamp
 
 Base = declarative_base()
 
@@ -33,7 +34,7 @@ class Quads(Base):
 #     username = Column(String(255), unique=True, nullable=False)
 #     password = Column(String(255), nullable=False)
 #     email = Column(String(255), unique=True, nullable=False)
-#     created = Column(DATETIME, server_default=datetime.datetime.now)
+#     created = Column(DATETIME, server_default=current_timestamp())
 #
 #     def __repr__(self):
 #         return f'User {self.username}'
