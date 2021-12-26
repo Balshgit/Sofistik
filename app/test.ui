@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1162</width>
-    <height>773</height>
+    <width>1065</width>
+    <height>774</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -53,7 +53,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>531</width>
+         <width>462</width>
          <height>656</height>
         </rect>
        </property>
@@ -147,11 +147,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_4">
-            <property name="text">
-             <string>2500000</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_4"/>
           </item>
           <item>
            <widget class="QLabel" name="label_14">
@@ -179,11 +175,8 @@
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox">
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
             <property name="text">
-             <string>     </string>
+             <string>CheckBox</string>
             </property>
            </widget>
           </item>
@@ -219,14 +212,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_5">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>20000</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_5"/>
           </item>
           <item>
            <widget class="QLabel" name="label_17">
@@ -266,14 +252,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_6">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>18000</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_6"/>
           </item>
           <item>
            <widget class="QLabel" name="label_20">
@@ -329,11 +308,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_7">
-            <property name="text">
-             <string>150.0</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_7"/>
           </item>
           <item>
            <widget class="QLabel" name="label_23">
@@ -373,11 +348,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_8">
-            <property name="text">
-             <string>60.0</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_8"/>
           </item>
           <item>
            <widget class="QLabel" name="label_26">
@@ -417,11 +388,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_9">
-            <property name="text">
-             <string>5.0</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_9"/>
           </item>
           <item>
            <widget class="QLabel" name="label_29">
@@ -461,11 +428,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_10">
-            <property name="text">
-             <string>5.0</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_10"/>
           </item>
           <item>
            <widget class="QLabel" name="label_32">
@@ -505,11 +468,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_19">
-            <property name="text">
-             <string>11.31</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_19"/>
           </item>
           <item>
            <widget class="QLabel" name="label_65">
@@ -549,11 +508,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_20">
-            <property name="text">
-             <string>2.5</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_20"/>
           </item>
           <item>
            <widget class="QLabel" name="label_68">
@@ -593,11 +548,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_21">
-            <property name="text">
-             <string>1.2</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_21"/>
           </item>
           <item>
            <widget class="QLabel" name="label_71">
@@ -640,66 +591,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox">
-            <property name="currentText">
-             <string>B20</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>B20</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B10</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B15</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B25</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B30</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B35</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B40</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B45</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B50</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B55</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B60</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QComboBox" name="comboBox"/>
           </item>
          </layout>
         </item>
@@ -719,38 +611,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_2">
-            <item>
-             <property name="text">
-              <string>A500</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>A400</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>A600</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>B500</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>A240</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>A300</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QComboBox" name="comboBox_2"/>
           </item>
          </layout>
         </item>
@@ -800,11 +661,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_3">
-            <property name="text">
-             <string>0.03</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_3"/>
           </item>
           <item>
            <widget class="QLabel" name="label_11">
@@ -840,16 +697,12 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>a crc,ult</string>
+             <string>acrc,ult</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_24">
-            <property name="text">
-             <string>0.04</string>
-            </property>
-           </widget>
+           <widget class="QLineEdit" name="lineEdit_24"/>
           </item>
           <item>
            <widget class="QLabel" name="label_80">
@@ -871,7 +724,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Рассчитать</string>
+             <string>PushButton</string>
             </property>
            </widget>
           </item>
@@ -1009,7 +862,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1162</width>
+     <width>1065</width>
      <height>22</height>
     </rect>
    </property>

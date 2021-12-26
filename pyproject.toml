@@ -5,7 +5,7 @@ description = "Image creation from sofistik DB"
 authors = ["Dmitry Afanasyev <Balshbox@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 Pillow = "^8.4.0"
 Pyqt6 = "6.2.0"
 sqlalchemy = "1.4.26"
