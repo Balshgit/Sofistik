@@ -174,7 +174,7 @@ class Ui_MainWindow(object):
         self.label_text_5_1.setObjectName("label_text_5_1")
         self.get_info_horizontal_layout_5.addWidget(self.label_text_5_1)
         self.label_text_5_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePoliсв ююcy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_5_2.sizePolicy().hasHeightForWidth())
