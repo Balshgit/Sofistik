@@ -19,8 +19,6 @@ class SofistikUI(MainWindowUI):
         self.sofistik = None
         self.database = None
         self.ask_area_number = None
-        self.calculate_button.clicked.connect(lambda: self.calculate_button_action(self.ask_area_number,
-                                                                                   self.plate_group.text()))
 
     # def button_pushed(self):
     #     self.OKButton.clicked.connect(lambda: self.action())
@@ -44,9 +42,9 @@ class SofistikUI(MainWindowUI):
             create_image(quad_dict=quads, image_name='result/test_image_from_python.bmp')
 
             # Show image on main template
-            self.plate_picture.setPixmap(QtGui.QPixmap("./result/test_image_from_python.bmp"))
-            self.plate_picture.setScaledContents(True)
-            self.plate_picture.setObjectName("label")
+            self.large_picture_label.setPixmap(QtGui.QPixmap("./result/test_image_from_python.bmp"))
+            self.large_picture_label.setScaledContents(True)
+            self.large_picture_label.setObjectName("label")
         except Exception as e:
             logger.error(f'Error getting quads {e}')
 

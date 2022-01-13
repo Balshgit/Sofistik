@@ -19,7 +19,10 @@ class MainUI(SofistikUI):
     def after_setup_ui(self) -> None:
         """ Add action in File menu when database added """
 
-        self.actionOpen_database.triggered.connect(self.open_db)
+        self.calculate_button.clicked.connect(lambda: self.calculate_button_action(self.ask_area_number,
+                                                                                   self.plate_group.text()))
+
+        self.choose_db_menu.triggered.connect(self.open_db)
         # self.button_pushed()
 
     def open_db(self) -> None:
