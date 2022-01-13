@@ -63,7 +63,7 @@ class AreaSelect(AskPlateUI):
         group = get_plate_group(self.sofistik, area)
         try:
             ui.plate_group_area_setter(text=f'Plate group: {group} Area {area}')
-            # ui.action_on_group_chosen(area=area, group=group)
+            ui.ask_area_number = area
         except Exception as e:
             logger.error(e)
 
