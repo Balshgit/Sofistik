@@ -41,8 +41,9 @@ Create table in alembic versions
 
 Run migrations
 
-    cd .\sofistik\ # alembic root
+    cd .\{PROJECT_ROOT}\sofistik\ # alembic root
     alembic --config .\sofistik\database\alembic\alembic.ini upgrade head
+    alembic --config .\alembic\alembic.ini downgrade 389018a3e0f0
 
 Downgrade migrations
     

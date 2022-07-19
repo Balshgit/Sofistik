@@ -17,7 +17,10 @@ class MainUI(SofistikUI):
     def after_setup_ui(self) -> None:
         """Add action in File menu when database added"""
 
-        self.actionOpen_database.triggered.connect(self.open_db)
+        self.calculate_button.clicked.connect(lambda: self.calculate_button_action(self.ask_area_number,
+                                                                                   self.plate_group.text()))
+
+        self.choose_db_menu.triggered.connect(self.open_db)
         # self.button_pushed()
 
     def open_db(self) -> None:
@@ -41,6 +44,7 @@ class AreaSelect(AskPlateUI):
     """Ask area window"""
 
     def __init__(self, sofistik: Sofistik, dialog):
+        self.area_number = None
         super().__init__(sofistik, dialog)
 
     def after_setup_ui(self):
@@ -55,8 +59,8 @@ class AreaSelect(AskPlateUI):
         area = int(self.area.text())
         group = get_plate_group(self.sofistik, area)
         try:
-            ui.plate_group_setter(f'Plate group: {group}')
-            ui.action_on_group_chosen(area=area, group=group)
+            ui.plate_group_area_setter(text=f'Plate group: {group} Area {area}')
+            # ui.action_on_group_chosen(area=area, group=group)
         except Exception as e:
             logger.error(e)
 
