@@ -1,11 +1,10 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QDialog, QMainWindow
-
 from sofistik.sofistik_discover import Sofistik
 
 
 class MainWindowUI:
-    """ Main window from PyQt6 \n
+    """Main window from PyQt6 \n
     label: db_name \n
     button: OKButton \n
     picture: plate_picture \n
@@ -80,7 +79,7 @@ class MainWindowUI:
 
 
 class AskPlateUI:
-    """ Ask plate area from PyQt6 \n
+    """Ask plate area from PyQt6 \n
     label: area \n
     button: select_area_OK \n
     """
@@ -126,5 +125,6 @@ class AskPlateUI:
         self.select_area_OK.setText(_translate("Ask_area", "OK"))
         self.select_area_OK_pressed.setText(_translate("Ask_area", "area_selected"))
         self.select_area_OK_pressed.setToolTip(
-            _translate("Ask_plate", "<html><head/><body><p>Select plate and press OK</p></body></html>"))
+            _translate("Ask_plate", "<html><head/><body><p>Select plate and press OK</p></body></html>")
+        )
         self.select_area_OK_pressed.setShortcut(_translate("Ask_area", "Return"))

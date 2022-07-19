@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Sofistik"
-version = "0.1.0"
+version = "0.3.1"
 description = "Image creation from sofistik DB"
 authors = ["Dmitry Afanasyev <Balshbox@gmail.com>"]
 
@@ -12,7 +12,37 @@ sqlalchemy = "1.4.26"
 alembic = "1.7.4"
 
 [tool.poetry.dev-dependencies]
+ipython = "^8.4.0"
+safety = "^1.10.3"
+pytest = "^6.0"
+pytest-deadfixtures = "^2.2.1"
+pytest-testmon = "^1.1.2"
+pytest-mock = "^3.6.1"
+pytest-cov = "^2.12.1"
+pytest-timeout = "^1.4.2"
+pytest-sugar = "^0.9.4"
+pytest-clarity = "^1.0.1"
+pytest-env = "^0.6.2"
+flake8 = "^3.9.2"
+bandit = "1.7.2"
+mypy = "^0.961"
+isort = "^5.9.3"
+black = "^22.3.0"
+autoflake = "^1.4"
+SQLAlchemy = {version = "^1.4", extras = ["mypy"]}
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 120
+target-version = ['py310']
+
+
+[tool.isort]
+profile = "black"
+src_paths = ["app", "settings", "tests"]
+combine_as_imports = true

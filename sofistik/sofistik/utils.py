@@ -1,19 +1,19 @@
 import json
 import logging
+import sqlite3
 import sys
 import time
 from functools import wraps
 from pathlib import Path
 from random import randint
-import sqlite3
 
 from PIL import Image, ImageDraw, ImageFont
 
 logger = logging.getLogger('main_logger')
-formatter = logging.Formatter(datefmt="%Y.%m.%d %H:%M:%S", fmt='%(asctime)s | %(levelname)s | '
-                                                               'func name: %(funcName)s | message: %(message)s')
-# fmt='%(asctime)s | %(levelname)s | process: %(process)d | module name: %(name)s | '
-#     'func name: %(funcName)s | line number: %(lineno)s | message: %(message)s',)
+formatter = logging.Formatter(
+    datefmt="%Y.%m.%d %H:%M:%S", fmt='%(asctime)s | %(levelname)s | ' 'func name: %(funcName)s | message: %(message)s'
+)
+
 handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(formatter)
 logger.setLevel(logging.INFO)
@@ -26,6 +26,7 @@ def time_execute(func):
 
     :param func: decorated function
     """
+
     @wraps(func)
     def new_func(*args, **kwargs):
         begin = time.time()
@@ -58,7 +59,7 @@ def read_data_from_txt(filename: Path) -> dict:
     :return: Data as dict from file
     """
     with open(filename, mode='r') as file:
-        data = (json.load(file))
+        data = json.load(file)
     for quad_number, coords in data.items():
         rectangle = list()
         for coord in coords:
@@ -86,8 +87,7 @@ def create_image(quad_dict: dict, image_name: str) -> None:
         font = ImageFont.truetype(font="fonts/Roboto-Thin.ttf", size=fontsize)
 
         # draw result
-        # draw.polygon(rectangle, fill=(randint(0, 255), randint(0, 255), randint(0, 255)), outline='yellow')
-        draw.polygon(rectangle, outline='black')
+        draw.polygon(rectangle, fill=(randint(0, 255), randint(0, 255), randint(0, 255)), outline='yellow')
 
         draw.text((text_x, text_y), str(quad_number), font=font, fill='black')
     img.save(image_name)

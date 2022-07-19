@@ -1,13 +1,23 @@
 import datetime
 
-from sqlalchemy import Column, String, Integer, ForeignKey, CHAR, DATETIME, INTEGER, Text
+from sqlalchemy import (
+    CHAR,
+    DATETIME,
+    INTEGER,
+    Column,
+    ForeignKey,
+    Integer,
+    String,
+    Text,
+)
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
 
 class Quads(Base):
-    """ Quad model for data base """
+    """Quad model for data base"""
+
     __tablename__ = 'quads'
 
     id = Column(Integer, primary_key=True)
@@ -24,41 +34,3 @@ class Quads(Base):
 
     def __repr__(self):
         return f'Quad {self.quad_number}'
-
-
-# class User(Base):
-#     __tablename__ = "users"
-#
-#     id = Column(Integer, primary_key=True)
-#     username = Column(String(255), unique=True, nullable=False)
-#     password = Column(String(255), nullable=False)
-#     email = Column(String(255), unique=True, nullable=False)
-#     created = Column(DATETIME, server_default=datetime.datetime.now)
-#
-#     def __repr__(self):
-#         return f'User {self.username}'
-#
-#
-# class Comment(Base):
-#     __tablename__ = 'comments'
-#
-#     id = Column(Integer, primary_key=True)
-#     node_number = Column(CHAR, nullable=False, default='')
-#     body = Column(Text, nullable=False)
-#     user_id = Column(Integer, ForeignKey('quads.id', ondelete='SET NULL'), nullable=False)
-#     post_id = Column(Integer, ForeignKey('posts.id', ondelete='CASCADE'), nullable=False)
-#
-#     def __repr__(self):
-#         return f'Comment {self.id}'
-#
-#
-# class Post(Base):
-#     __tablename__ = 'posts'
-#
-#     id = Column(Integer, primary_key=True)
-#     title = Column(String(255), nullable=True)
-#     text = Column(Text, nullable=False)
-#     author_id = Column(Integer, ForeignKey('users.id', ondelete='RESTRICT'), nullable=False)
-#
-#     def __repr__(self):
-#         return f'Post {self.title[:10]}'

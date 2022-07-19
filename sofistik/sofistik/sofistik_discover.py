@@ -11,7 +11,6 @@ from .utils import logger
 
 
 class Sofistik:
-
     def __init__(self, sofistik_year: int, filename: Path) -> None:
 
         os.add_dll_directory(fr'C:\Program Files\SOFiSTiK\{sofistik_year}\SOFiSTiK {sofistik_year}\interfaces\64bit')
@@ -60,7 +59,7 @@ class Sofistik:
 
         pos = c_int(0)
         a = c_int()
-        result = list()
+        result = []
 
         ie = c_int(0)
         datalen = c_int(0)
@@ -75,24 +74,19 @@ class Sofistik:
             = 3 -> Key does not exist
         """
         while ie.value < 2:
-            ie.value = self._py_sof_cdb_get(self._Index, obj_db_index, obj_db_index_sub_number,
-                                            byref(database_object), byref(RecLen), 1)
+            ie.value = self._py_sof_cdb_get(
+                self._Index, obj_db_index, obj_db_index_sub_number, byref(database_object), byref(RecLen), 1
+            )
 
-            temp = list()
             for argument in args:
                 ind = re.findall(r'\[\d{1}\]', argument)
                 if ind and ind is not None:
                     db_item = getattr(database_object, str(argument).replace(str(ind[0]), ''))
                     ind = int(str(ind[0]).strip('[]'))
-                    temp.append(db_item[ind])
+                    result.append(db_item[ind])
                 else:
                     db_item = getattr(database_object, argument)
-                    temp.append(db_item)
-            result.append(temp)
-
-            # # Logger for debug TODO: delete this lines
-            # all_objects = ', '.join([str(item) for item in temp])
-            # logger.info(f'({all_objects})')
+                    result.append(db_item)
 
             RecLen = c_int(sizeof(database_object))
 
