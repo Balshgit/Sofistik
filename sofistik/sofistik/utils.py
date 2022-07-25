@@ -10,10 +10,8 @@ import sqlite3
 from PIL import Image, ImageDraw, ImageFont
 
 logger = logging.getLogger('main_logger')
-formatter = logging.Formatter(datefmt="%Y.%m.%d %H:%M:%S", fmt='%(asctime)s | %(levelname)s | '
-                                                               'func name: %(funcName)s | message: %(message)s')
-# fmt='%(asctime)s | %(levelname)s | process: %(process)d | module name: %(name)s | '
-#     'func name: %(funcName)s | line number: %(lineno)s | message: %(message)s',)
+formatter = logging.Formatter(datefmt="%Y.%m.%d %H:%M:%S",
+                              fmt='%(asctime)s | %(levelname)s | func name: %(funcName)s | message: %(message)s')
 handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(formatter)
 logger.setLevel(logging.INFO)
@@ -49,7 +47,7 @@ def write_to_file(data: dict, filename: str) -> None:
         file.write(write_data)
 
 
-def read_data_from_txt(filename: Path) -> dict:
+def read_data_from_file(filename: Path) -> dict:
     """
     Read data from file. Data must be in json format
 
@@ -60,9 +58,7 @@ def read_data_from_txt(filename: Path) -> dict:
     with open(filename, mode='r') as file:
         data = (json.load(file))
     for quad_number, coords in data.items():
-        rectangle = list()
-        for coord in coords:
-            rectangle.append(tuple(coord))
+        rectangle = [list(coord) for coord in coords]
         data[quad_number] = rectangle
     return data
 
@@ -86,8 +82,7 @@ def create_image(quad_dict: dict, image_name: str) -> None:
         font = ImageFont.truetype(font="fonts/Roboto-Thin.ttf", size=fontsize)
 
         # draw result
-        # draw.polygon(rectangle, fill=(randint(0, 255), randint(0, 255), randint(0, 255)), outline='yellow')
-        draw.polygon(rectangle, outline='black')
+        draw.polygon(rectangle, fill=(randint(0, 255), randint(0, 255), randint(0, 255)), outline='yellow')
 
         draw.text((text_x, text_y), str(quad_number), font=font, fill='black')
     img.save(image_name)
@@ -121,17 +116,13 @@ def mirror_quad_by_y(quad: dict) -> dict:
 
     :return: Quad instance with mirror y coords
     """
-    # TODO: rework this
-    all_y_coords = list()
+    all_y_coords = []
     for rectangle in quad.values():
         for coord in rectangle:
             all_y_coords.append(coord[1])
     max_y = max(all_y_coords)
     for quad_number, rectangle in quad.items():
-        mirror_y = []
         for coord in rectangle:
-            temp = list(coord)
-            temp[1] = max_y - temp[1]
-            mirror_y.append(tuple(temp))
-        quad[quad_number] = mirror_y
+            coord[1] = max_y - coord[1]
+        quad[quad_number] = [tuple(coord) for coord in rectangle]
     return quad

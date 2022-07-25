@@ -91,77 +91,7 @@ def db_get_quad(quad_number: int) -> Any:
         return quad
     except Exception as e:
         logger.error(f'Cant get quad from DB. Reason: {e}')
-#
-#
-# def db_get_location(chat_id):
-#
-#     try:
-#         user = session.query(bot_users_table)\
-#             .filter(bot_users_table.c.chat_id == chat_id).one()
-#         return user.location
-#     except:
-#         pass
-#
-#
-# def db_get_id(chat_id):
-#
-#     try:
-#         user = session.query(bot_users_table) \
-#             .filter(bot_users_table.c.chat_id == chat_id).one()
-#         return user.id
-#     except(Exception) as e:
-#         print('ERORO chat ID', e)
-#         pass
-#
-#
-# def db_update_location(chat_id, location):
-#     with engine.connect() as conn:
-#         try:
-#             insert_statement = bot_users_table.update().values(location=location). \
-#                 where(bot_users_table.c.chat_id == chat_id)
-#             conn.execute(insert_statement)
-#         except Exception as e:
-#             print('ERROR!!!!!!!!!!!!!!!!', e)
-#             pass
-#
-#
-# def db_insert_reply_message(chat_id_id, nickname=None, name=None, reply_message=None):
-#
-#     with engine.connect() as conn:
-#
-#         insert_statement = reply_messages.insert().values(chat_id_id=chat_id_id,
-#                                                        nickname=nickname,
-#                                                        name=name,
-#                                                        message=reply_message,
-#                                                        message_time=get_now(3)
-#                                                        )
-#         conn.execute(insert_statement)
-#
-#
-# def db_insert_user_message(chat_id_id, nickname=None, location=None,
-#                            name=None, message=None):
-#
-#     with engine.connect() as conn:
-#
-#         insert_statement = users_messages.insert().values(chat_id_id=chat_id_id,
-#                                                           nickname=nickname,
-#                                                           name=name,
-#                                                           message=message,
-#                                                           location=location,
-#                                                           message_time=get_now(3)
-#                                                           )
-#         conn.execute(insert_statement)
-#
-#
-# def db_insert_announce(author, bot_announce):
-#
-#     with engine.connect() as conn:
-#
-#         insert_statement = announce.insert().values(announce=bot_announce,
-#                                                     author=author,
-#                                                     created=get_now(3)
-#                                                     )
-#         conn.execute(insert_statement)
+
 
 # test_quads = {}
 # test_quads[7770102] = ('(555, 777)', '(333, 22)', '(888, 555)', '(888, 222)')

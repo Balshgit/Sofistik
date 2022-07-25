@@ -90,10 +90,6 @@ class Sofistik:
                     temp.append(db_item)
             result.append(temp)
 
-            # # Logger for debug TODO: delete this lines
-            # all_objects = ', '.join([str(item) for item in temp])
-            # logger.info(f'({all_objects})')
-
             RecLen = c_int(sizeof(database_object))
 
         self._close_connect_to_db()  # Close connection to DB
