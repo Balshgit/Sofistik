@@ -25,8 +25,16 @@ def get_now(offset: int) -> datetime:
     return now
 
 
-def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, area: int, group: int,
-                             bending_moment_mxx: int, bending_moment_myy: int, bending_moment_mxy: int) -> None:
+def db_insert_or_update_quad(
+    update_obj: bool,
+    quad_number: int,
+    nodes: tuple,
+    area: int,
+    group: int,
+    bending_moment_mxx: int,
+    bending_moment_myy: int,
+    bending_moment_mxy: int,
+) -> None:
     """
     Add new quad or update it
 
@@ -43,33 +51,39 @@ def db_insert_or_update_quad(update_obj: bool, quad_number: int, nodes: tuple, a
     """
     try:
         with session_factory() as session:
-            quad = Quads(quad_number=quad_number,
-                         node_0=str(nodes[0]),
-                         node_1=str(nodes[1]),
-                         node_2=str(nodes[2]),
-                         node_3=str(nodes[3]),
-                         area=area,
-                         group=group,
-                         bending_moment_mxx=bending_moment_mxx,
-                         bending_moment_myy=bending_moment_myy,
-                         bending_moment_mxy=bending_moment_mxy
-                         )
+            quad = Quads(
+                quad_number=quad_number,
+                node_0=str(nodes[0]),
+                node_1=str(nodes[1]),
+                node_2=str(nodes[2]),
+                node_3=str(nodes[3]),
+                area=area,
+                group=group,
+                bending_moment_mxx=bending_moment_mxx,
+                bending_moment_myy=bending_moment_myy,
+                bending_moment_mxy=bending_moment_mxy,
+            )
             session.add(quad)
             session.commit()
     except IntegrityError:
         if update_obj:
             logger.error(f'Quad {quad_number} already exists. Updating quad')
             with session_factory() as session:
-                session.execute(update(Quads).where(Quads.quad_number == quad_number).
-                                values(node_0=str(nodes[0]),
-                                       node_1=str(nodes[1]),
-                                       node_2=str(nodes[2]),
-                                       node_3=str(nodes[3]),
-                                       area=area,
-                                       group=group,
-                                       bending_moment_mxx=bending_moment_mxx,
-                                       bending_moment_myy=bending_moment_myy,
-                                       bending_moment_mxy=bending_moment_mxy))
+                session.execute(
+                    update(Quads)
+                    .where(Quads.quad_number == quad_number)
+                    .values(
+                        node_0=str(nodes[0]),
+                        node_1=str(nodes[1]),
+                        node_2=str(nodes[2]),
+                        node_3=str(nodes[3]),
+                        area=area,
+                        group=group,
+                        bending_moment_mxx=bending_moment_mxx,
+                        bending_moment_myy=bending_moment_myy,
+                        bending_moment_mxy=bending_moment_mxy,
+                    )
+                )
                 session.commit()
     except Exception as e:
         logger.error(f'Unexpected error {e}')

@@ -11,7 +11,6 @@ from .utils import logger
 
 
 class Sofistik:
-
     def __init__(self, sofistik_year: int, filename: Path) -> None:
 
         os.add_dll_directory(fr'C:\Program Files\SOFiSTiK\{sofistik_year}\SOFiSTiK {sofistik_year}\interfaces\64bit')
@@ -75,8 +74,9 @@ class Sofistik:
             = 3 -> Key does not exist
         """
         while ie.value < 2:
-            ie.value = self._py_sof_cdb_get(self._Index, obj_db_index, obj_db_index_sub_number,
-                                            byref(database_object), byref(RecLen), 1)
+            ie.value = self._py_sof_cdb_get(
+                self._Index, obj_db_index, obj_db_index_sub_number, byref(database_object), byref(RecLen), 1
+            )
 
             temp = list()
             for argument in args:

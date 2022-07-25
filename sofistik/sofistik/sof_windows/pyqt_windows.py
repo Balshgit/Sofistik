@@ -4,7 +4,7 @@ from sofistik.sofistik_discover import Sofistik
 
 
 class MainWindowUI:
-    """ Main window from PyQt6 \n
+    """Main window from PyQt6 \n
     label: db_name \n
     button: OKButton \n
     picture: plate_picture \n
@@ -17,8 +17,9 @@ class MainWindowUI:
     def base_setup_ui(self, main_window: QMainWindow) -> None:
         main_window.setObjectName("main_window")
         main_window.resize(1162, 773)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(main_window.sizePolicy().hasHeightForWidth())
@@ -30,8 +31,9 @@ class MainWindowUI:
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.head_label = QtWidgets.QLabel(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(3)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.head_label.sizePolicy().hasHeightForWidth())
@@ -39,8 +41,9 @@ class MainWindowUI:
         self.head_label.setObjectName("head_label")
         self.horizontalLayout_3.addWidget(self.head_label)
         self.db_name = QtWidgets.QLabel(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(2)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.db_name.sizePolicy().hasHeightForWidth())
@@ -48,8 +51,9 @@ class MainWindowUI:
         self.db_name.setObjectName("db_name")
         self.horizontalLayout_3.addWidget(self.db_name)
         self.plate_group = QtWidgets.QLabel(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.plate_group.sizePolicy().hasHeightForWidth())
@@ -82,8 +86,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_1 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_1.setObjectName("get_info_horizontal_layout_1")
         self.label_text_1_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_1_1.sizePolicy().hasHeightForWidth())
@@ -91,8 +96,9 @@ class MainWindowUI:
         self.label_text_1_1.setObjectName("label_text_1_1")
         self.get_info_horizontal_layout_1.addWidget(self.label_text_1_1)
         self.label_text_1_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_1_2.sizePolicy().hasHeightForWidth())
@@ -109,8 +115,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_2 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_2.setObjectName("get_info_horizontal_layout_2")
         self.label_text_2_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_2_1.sizePolicy().hasHeightForWidth())
@@ -118,8 +125,9 @@ class MainWindowUI:
         self.label_text_2_1.setObjectName("label_text_2_1")
         self.get_info_horizontal_layout_2.addWidget(self.label_text_2_1)
         self.label_text_2_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_2_2.sizePolicy().hasHeightForWidth())
@@ -136,8 +144,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_3 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_3.setObjectName("get_info_horizontal_layout_3")
         self.label_text_3_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_3_1.sizePolicy().hasHeightForWidth())
@@ -153,8 +162,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_4 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_4.setObjectName("get_info_horizontal_layout_4")
         self.label_text_4_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_4_1.sizePolicy().hasHeightForWidth())
@@ -162,8 +172,9 @@ class MainWindowUI:
         self.label_text_4_1.setObjectName("label_text_4_1")
         self.get_info_horizontal_layout_4.addWidget(self.label_text_4_1)
         self.label_text_4_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_4_2.sizePolicy().hasHeightForWidth())
@@ -181,8 +192,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_5 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_5.setObjectName("get_info_horizontal_layout_5")
         self.label_text_5_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_5_1.sizePolicy().hasHeightForWidth())
@@ -190,8 +202,9 @@ class MainWindowUI:
         self.label_text_5_1.setObjectName("label_text_5_1")
         self.get_info_horizontal_layout_5.addWidget(self.label_text_5_1)
         self.label_text_5_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_5_2.sizePolicy().hasHeightForWidth())
@@ -217,8 +230,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_6 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_6.setObjectName("get_info_horizontal_layout_6")
         self.label_text_6_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_6_1.sizePolicy().hasHeightForWidth())
@@ -226,8 +240,9 @@ class MainWindowUI:
         self.label_text_6_1.setObjectName("label_text_6_1")
         self.get_info_horizontal_layout_6.addWidget(self.label_text_6_1)
         self.label_text_6_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_6_2.sizePolicy().hasHeightForWidth())
@@ -244,8 +259,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_7 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_7.setObjectName("get_info_horizontal_layout_7")
         self.label_text_7_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_7_1.sizePolicy().hasHeightForWidth())
@@ -253,8 +269,9 @@ class MainWindowUI:
         self.label_text_7_1.setObjectName("label_text_7_1")
         self.get_info_horizontal_layout_7.addWidget(self.label_text_7_1)
         self.label_text_7_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_7_2.sizePolicy().hasHeightForWidth())
@@ -271,8 +288,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_8 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_8.setObjectName("get_info_horizontal_layout_8")
         self.label_text_8_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_8_1.sizePolicy().hasHeightForWidth())
@@ -280,8 +298,9 @@ class MainWindowUI:
         self.label_text_8_1.setObjectName("label_text_8_1")
         self.get_info_horizontal_layout_8.addWidget(self.label_text_8_1)
         self.label_text_8_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_8_2.sizePolicy().hasHeightForWidth())
@@ -298,8 +317,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_9 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_9.setObjectName("get_info_horizontal_layout_9")
         self.label_text_9_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_9_1.sizePolicy().hasHeightForWidth())
@@ -307,8 +327,9 @@ class MainWindowUI:
         self.label_text_9_1.setObjectName("label_text_9_1")
         self.get_info_horizontal_layout_9.addWidget(self.label_text_9_1)
         self.label_text_9_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_9_2.sizePolicy().hasHeightForWidth())
@@ -325,8 +346,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_10 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_10.setObjectName("get_info_horizontal_layout_10")
         self.label_text_10_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_10_1.sizePolicy().hasHeightForWidth())
@@ -334,8 +356,9 @@ class MainWindowUI:
         self.label_text_10_1.setObjectName("label_text_10_1")
         self.get_info_horizontal_layout_10.addWidget(self.label_text_10_1)
         self.label_text_10_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_10_2.sizePolicy().hasHeightForWidth())
@@ -352,8 +375,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_11 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_11.setObjectName("get_info_horizontal_layout_11")
         self.label_text_11_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_11_1.sizePolicy().hasHeightForWidth())
@@ -361,8 +385,9 @@ class MainWindowUI:
         self.label_text_11_1.setObjectName("label_text_11_1")
         self.get_info_horizontal_layout_11.addWidget(self.label_text_11_1)
         self.label_text_11_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_11_2.sizePolicy().hasHeightForWidth())
@@ -379,8 +404,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_12 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_12.setObjectName("get_info_horizontal_layout_12")
         self.label_text_12_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_12_1.sizePolicy().hasHeightForWidth())
@@ -388,8 +414,9 @@ class MainWindowUI:
         self.label_text_12_1.setObjectName("label_text_12_1")
         self.get_info_horizontal_layout_12.addWidget(self.label_text_12_1)
         self.label_text_12_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_12_2.sizePolicy().hasHeightForWidth())
@@ -414,8 +441,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_13 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_13.setObjectName("get_info_horizontal_layout_13")
         self.label_text_13_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_13_1.sizePolicy().hasHeightForWidth())
@@ -440,8 +468,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_14 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_14.setObjectName("get_info_horizontal_layout_14")
         self.label_text_14_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_14_1.sizePolicy().hasHeightForWidth())
@@ -469,8 +498,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_15 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_15.setObjectName("get_info_horizontal_layout_15")
         self.label_text_15_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_15_1.sizePolicy().hasHeightForWidth())
@@ -478,8 +508,9 @@ class MainWindowUI:
         self.label_text_15_1.setObjectName("label_text_15_1")
         self.get_info_horizontal_layout_15.addWidget(self.label_text_15_1)
         self.label_text_15_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_15_2.sizePolicy().hasHeightForWidth())
@@ -496,8 +527,9 @@ class MainWindowUI:
         self.get_info_horizontal_layout_16 = QtWidgets.QHBoxLayout()
         self.get_info_horizontal_layout_16.setObjectName("get_info_horizontal_layout_16")
         self.label_text_16_1 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_16_1.sizePolicy().hasHeightForWidth())
@@ -505,8 +537,9 @@ class MainWindowUI:
         self.label_text_16_1.setObjectName("label_text_16_1")
         self.get_info_horizontal_layout_16.addWidget(self.label_text_16_1)
         self.label_text_16_2 = QtWidgets.QLabel(self.get_info_widget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_text_16_2.sizePolicy().hasHeightForWidth())
@@ -540,8 +573,9 @@ class MainWindowUI:
         self.total_pictures_widget = QtWidgets.QVBoxLayout()
         self.total_pictures_widget.setObjectName("total_pictures_widget")
         self.picture_preview = QtWidgets.QWidget(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.picture_preview.sizePolicy().hasHeightForWidth())
@@ -559,8 +593,7 @@ class MainWindowUI:
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.pic_preview_label = QtWidgets.QLabel(self.picture_preview_widget)
         self.pic_preview_label.setText("")
-        self.pic_preview_label.setPixmap(
-            QtGui.QPixmap("../../../.designer/sofistik/result/test_image_from_python.bmp"))
+        self.pic_preview_label.setPixmap(QtGui.QPixmap("../../../.designer/sofistik/result/test_image_from_python.bmp"))
         self.pic_preview_label.setScaledContents(True)
         self.pic_preview_label.setObjectName("pic_preview_label")
         self.gridLayout_4.addWidget(self.pic_preview_label, 0, 0, 1, 1)
@@ -571,8 +604,9 @@ class MainWindowUI:
         self.picture_horizontal_line.setObjectName("picture_horizontal_line")
         self.total_pictures_widget.addWidget(self.picture_horizontal_line)
         self.large_picture = QtWidgets.QWidget(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(3)
         sizePolicy.setHeightForWidth(self.large_picture.sizePolicy().hasHeightForWidth())
@@ -591,7 +625,8 @@ class MainWindowUI:
         self.large_picture_label = QtWidgets.QLabel(self.large_picture_scroll_area_widget)
         self.large_picture_label.setText("")
         self.large_picture_label.setPixmap(
-            QtGui.QPixmap("../../../.designer/sofistik/result/test_image_from_python.bmp"))
+            QtGui.QPixmap("../../../.designer/sofistik/result/test_image_from_python.bmp")
+        )
         self.large_picture_label.setScaledContents(True)
         self.large_picture_label.setObjectName("large_picture_label")
         self.gridLayout_2.addWidget(self.large_picture_label, 0, 0, 1, 1)
@@ -630,9 +665,14 @@ class MainWindowUI:
     def retranslateUi(self, main_window):
         _translate = QtCore.QCoreApplication.translate
         main_window.setWindowTitle(_translate("main_window", "Проверка на образование трещин и ширины их раскрытия"))
-        self.head_label.setText(_translate("main_window", "Методика расчета принята согласно СП 63.13330.2012.\n"
-                                                         "Рассматриваются трещины нормальные к продольной оси элемента.\n"
-                                                         "Элемент изгибаемый. Сечение прямоугольное."))
+        self.head_label.setText(
+            _translate(
+                "main_window",
+                "Методика расчета принята согласно СП 63.13330.2012.\n"
+                "Рассматриваются трещины нормальные к продольной оси элемента.\n"
+                "Элемент изгибаемый. Сечение прямоугольное.",
+            )
+        )
         self.db_name.setText(_translate("main_window", "TextLabel"))
         self.plate_group.setText(_translate("main_window", "TextLabel"))
         self.external_forces_label.setText(_translate("main_window", "Внешние усилия"))
@@ -645,13 +685,15 @@ class MainWindowUI:
         self.lineEdit_2_1.setText(_translate("main_window", "2500000"))
         self.label_text_2_3.setText(_translate("main_window", "кг·см"))
         self.label_text_3_1.setText(_translate("main_window", "Учесть продольную силу:"))
-        self.label_text_4_1.setText(_translate("main_window", "Продольная сила от полной нагрузки: \n"
-                                                             " ((сжатие: \"+\"; растяжение: \"−\"))"))
+        self.label_text_4_1.setText(
+            _translate("main_window", "Продольная сила от полной нагрузки: \n" " ((сжатие: \"+\"; растяжение: \"−\"))")
+        )
         self.label_text_4_2.setText(_translate("main_window", "N"))
         self.line_edit_4_1.setText(_translate("main_window", "20000"))
         self.label_text_4_3.setText(_translate("main_window", "кг (1 тс = 10^3 кг)"))
         self.label_text_5_1.setText(
-            _translate("main_window", "Продольная сила от постоянной и длительной нагрузки:    "))
+            _translate("main_window", "Продольная сила от постоянной и длительной нагрузки:    ")
+        )
         self.label_text_5_2.setText(_translate("main_window", "N1"))
         self.line_edit_5_1.setText(_translate("main_window", "18000"))
         self.label_text_5_3.setText(_translate("main_window", "кг"))
@@ -706,13 +748,15 @@ class MainWindowUI:
         self.comboBox_14.setItemText(4, _translate("main_window", "A240"))
         self.comboBox_14.setItemText(5, _translate("main_window", "A300"))
         self.restrictions_label.setText(_translate("main_window", "Ограничения"))
-        self.label_text_15_1.setText(_translate("main_window", "Предельно допустимая ширина продолжительного \n"
-                                                              "раскрытия трещин:"))
+        self.label_text_15_1.setText(
+            _translate("main_window", "Предельно допустимая ширина продолжительного \n" "раскрытия трещин:")
+        )
         self.label_text_15_2.setText(_translate("main_window", "a crc,ult,l"))
         self.line_edit_15_1.setText(_translate("main_window", "0.03"))
         self.label_text_15_3.setText(_translate("main_window", "см"))
-        self.label_text_16_1.setText(_translate("main_window", "Предельно допустимая ширина непродолжительного\n"
-                                                              "раскрытия трещин:"))
+        self.label_text_16_1.setText(
+            _translate("main_window", "Предельно допустимая ширина непродолжительного\n" "раскрытия трещин:")
+        )
         self.label_text_16_2.setText(_translate("main_window", "a crc,ult"))
         self.line_edit_16.setText(_translate("main_window", "0.04"))
         self.label_text_16_3.setText(_translate("main_window", "см"))
@@ -726,7 +770,7 @@ class MainWindowUI:
 
 
 class AskPlateUI:
-    """ Ask plate area from PyQt6 \n
+    """Ask plate area from PyQt6 \n
     label: area \n
     button: select_area_OK \n
     """
@@ -773,5 +817,6 @@ class AskPlateUI:
         self.select_area_OK.setText(_translate("Ask_area", "OK"))
         self.select_area_OK_pressed.setText(_translate("Ask_area", "area_selected"))
         self.select_area_OK_pressed.setToolTip(
-            _translate("Ask_plate", "<html><head/><body><p>Select plate and press OK</p></body></html>"))
+            _translate("Ask_plate", "<html><head/><body><p>Select plate and press OK</p></body></html>")
+        )
         self.select_area_OK_pressed.setShortcut(_translate("Ask_area", "Return"))

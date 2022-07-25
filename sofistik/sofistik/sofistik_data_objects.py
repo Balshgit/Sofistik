@@ -15,11 +15,16 @@ def get_plate_group(sofistik: Sofistik, area: int) -> int:
 
     :return: Plate number is used just for check data is correct
     """
-    cgar_data = sofistik.get_data(database_object=getattr(sof_struct, 'cgar'), obj_db_index=32,
-                                  obj_db_index_sub_number=area, args=['m_nog',
-                                                                      'm_nom',
-                                                                      'm_nor',
-                                                                      ])
+    cgar_data = sofistik.get_data(
+        database_object=getattr(sof_struct, 'cgar'),
+        obj_db_index=32,
+        obj_db_index_sub_number=area,
+        args=[
+            'm_nog',
+            'm_nom',
+            'm_nor',
+        ],
+    )
     logger.info(f'Plate group is {cgar_data[0][0]}')
     return cgar_data[0][0]
 
@@ -34,24 +39,35 @@ def quad_dict_from_db(sofistik: Sofistik, area: int) -> dict:
     :return: Plate number is used just for check data is correct
     """
     # Get start and end numbers of quads and create range quads to check
-    quads = sofistik.get_data(database_object=getattr(sof_struct, 'cgar_elnr'), obj_db_index=32,
-                              obj_db_index_sub_number=area, args=['m_nr'])
+    quads = sofistik.get_data(
+        database_object=getattr(sof_struct, 'cgar_elnr'), obj_db_index=32, obj_db_index_sub_number=area, args=['m_nr']
+    )
     quads_in_this_area = range(int(quads[0][0][0]), -(quads[0][0][1]) + 1)  # get list of quads belong to this area
 
     # Get all quads from database
-    quad_data = sofistik.get_data(database_object=getattr(sof_struct, 'cquad'), obj_db_index=200,
-                                  obj_db_index_sub_number=0, args=['m_nr',
-                                                                   'm_node[0]',
-                                                                   'm_node[1]',
-                                                                   'm_node[2]',
-                                                                   'm_node[3]',
-                                                                   ])
+    quad_data = sofistik.get_data(
+        database_object=getattr(sof_struct, 'cquad'),
+        obj_db_index=200,
+        obj_db_index_sub_number=0,
+        args=[
+            'm_nr',
+            'm_node[0]',
+            'm_node[1]',
+            'm_node[2]',
+            'm_node[3]',
+        ],
+    )
     # Get all nodes from database
-    cnode_data = sofistik.get_data(database_object=getattr(sof_struct, 'cnode'), obj_db_index=20,
-                                   obj_db_index_sub_number=0, args=['m_nr',
-                                                                    'm_xyz[0]',
-                                                                    'm_xyz[1]',
-                                                                    ])
+    cnode_data = sofistik.get_data(
+        database_object=getattr(sof_struct, 'cnode'),
+        obj_db_index=20,
+        obj_db_index_sub_number=0,
+        args=[
+            'm_nr',
+            'm_xyz[0]',
+            'm_xyz[1]',
+        ],
+    )
     scale = 450  # Scale of quad mash image
 
     # Create dict with node number and it coords

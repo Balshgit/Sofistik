@@ -14,6 +14,7 @@ class SofistikUI(MainWindowUI):
     PyQtWindow: ask_area_number \n
     action: action()
     """
+
     def __init__(self):
         self.sofistik = None
         self.database = None
@@ -34,8 +35,16 @@ class SofistikUI(MainWindowUI):
         try:
             quads = quad_dict_from_db(self.sofistik, area=area)
             for quad, nodes in quads.items():
-                db_insert_or_update_quad(update_obj=False, quad_number=quad, nodes=nodes, area=area, group=group,
-                                         bending_moment_mxx=0, bending_moment_myy=0, bending_moment_mxy=0)
+                db_insert_or_update_quad(
+                    update_obj=False,
+                    quad_number=quad,
+                    nodes=nodes,
+                    area=area,
+                    group=group,
+                    bending_moment_mxx=0,
+                    bending_moment_myy=0,
+                    bending_moment_mxy=0,
+                )
 
             # Create image with quads
             create_image(quad_dict=quads, image_name='result/test_image_from_python.bmp')

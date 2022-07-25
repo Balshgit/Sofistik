@@ -10,26 +10,41 @@ from sofistik.utils import create_image, logger, read_data_from_file, write_to_f
 def quad_dict_from_db(sofistik_year: int, filepath: Path) -> dict:
     sof = Sofistik(sofistik_year=sofistik_year, filename=filepath)
 
-    quads = sof.get_data(database_object=getattr(sof_struct, 'cgar_elnr'), obj_db_index=32,
-                         obj_db_index_sub_number=2, args=['m_nr',
-                                                          ])
+    quads = sof.get_data(
+        database_object=getattr(sof_struct, 'cgar_elnr'),
+        obj_db_index=32,
+        obj_db_index_sub_number=2,
+        args=[
+            'm_nr',
+        ],
+    )
     quads_numbers = range(int(quads[0][0][0]), -(quads[0][0][1]) + 1)
     logger.info(quads_numbers)
 
-    quad_data = sof.get_data(database_object=getattr(sof_struct, 'cquad'), obj_db_index=200, obj_db_index_sub_number=00,
-                             args=['m_nr',
-                                   'm_node[0]',
-                                   'm_node[1]',
-                                   'm_node[2]',
-                                   'm_node[3]',
-                                   ])
+    quad_data = sof.get_data(
+        database_object=getattr(sof_struct, 'cquad'),
+        obj_db_index=200,
+        obj_db_index_sub_number=00,
+        args=[
+            'm_nr',
+            'm_node[0]',
+            'm_node[1]',
+            'm_node[2]',
+            'm_node[3]',
+        ],
+    )
     # logger.info(quad_data)
 
-    cnode_data = sof.get_data(database_object=getattr(sof_struct, 'cnode'), obj_db_index=20, obj_db_index_sub_number=0,
-                              args=['m_nr',
-                                    'm_xyz[0]',
-                                    'm_xyz[1]',
-                                    ])
+    cnode_data = sof.get_data(
+        database_object=getattr(sof_struct, 'cnode'),
+        obj_db_index=20,
+        obj_db_index_sub_number=0,
+        args=[
+            'm_nr',
+            'm_xyz[0]',
+            'm_xyz[1]',
+        ],
+    )
 
     # Create dict with node number and it coords
     cnodes_dict = dict()

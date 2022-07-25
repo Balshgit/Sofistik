@@ -16,19 +16,19 @@ class MainUI(SofistikUI):
     """Main window of program"""
 
     def after_setup_ui(self) -> None:
-        """ Add action in File menu when database added """
+        """Add action in File menu when database added"""
 
-        self.calculate_button.clicked.connect(lambda: self.calculate_button_action(self.ask_area_number,
-                                                                                   self.plate_group.text()))
+        self.calculate_button.clicked.connect(
+            lambda: self.calculate_button_action(self.ask_area_number, self.plate_group.text())
+        )
 
         self.choose_db_menu.triggered.connect(self.open_db)
         # self.button_pushed()
 
     def open_db(self) -> None:
-        """ Add and show new window with select area option """
+        """Add and show new window with select area option"""
 
-        file_name, _ = QFileDialog.getOpenFileName(caption='Open database file',
-                                                   filter='Db files (*.cdb *.txt)')
+        file_name, _ = QFileDialog.getOpenFileName(caption='Open database file', filter='Db files (*.cdb *.txt)')
         self.database = Path(file_name)
         self.db_name.setText(f'Data base: {self.database.name}')
 
@@ -43,14 +43,14 @@ class MainUI(SofistikUI):
 
 
 class AreaSelect(AskPlateUI):
-    """ Ask area window """
+    """Ask area window"""
 
     def __init__(self, sofistik: Sofistik, dialog):
         self.area_number = None
         super().__init__(sofistik, dialog)
 
     def after_setup_ui(self):
-        """ Add select_area_OK button action """
+        """Add select_area_OK button action"""
         self.select_area_OK.clicked.connect(self.area_selected)
 
     def area_selected(self):
@@ -73,6 +73,7 @@ if __name__ == "__main__":
         create_database()
         run_migrations()
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = MainUI()
