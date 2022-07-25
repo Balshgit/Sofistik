@@ -1,16 +1,15 @@
 from pathlib import Path
 
 from PyQt6 import QtWidgets
-from PyQt6.QtWidgets import QFileDialog, QDialog
+from PyQt6.QtWidgets import QDialog, QFileDialog
 
-from sofistik.settings import SOFISTIK_YEAR
+from sofistik.database.utils import create_database, run_migrations
+from sofistik.settings import DATABASE_NAME, SOFISTIK_YEAR
 from sofistik.sof_windows.pyqt_windows import AskPlateUI
 from sofistik.sof_windows.sofistik_ui import SofistikUI
 from sofistik.sofistik_data_objects import get_plate_group
 from sofistik.sofistik_discover import Sofistik
 from sofistik.utils import logger
-from sofistik.database.utils import create_database, run_migrations
-from sofistik.settings import DATABASE_NAME
 
 
 class MainUI(SofistikUI):

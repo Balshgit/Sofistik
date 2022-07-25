@@ -1,14 +1,12 @@
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from sqlalchemy import create_engine
-from sqlalchemy import update
+from sofistik.database.models import Quads
+from sofistik.settings import DATABASE_NAME
+from sofistik.utils import logger
+from sqlalchemy import create_engine, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker
-
-from sofistik.database.models import Quads
-from sofistik.utils import logger
-from sofistik.settings import DATABASE_NAME
 
 engine = create_engine(fr'sqlite:///{DATABASE_NAME}')
 session_factory = sessionmaker(bind=engine)

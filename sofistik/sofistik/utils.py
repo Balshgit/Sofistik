@@ -5,7 +5,6 @@ import time
 from functools import wraps
 from pathlib import Path
 from random import randint
-import sqlite3
 
 from PIL import Image, ImageDraw, ImageFont
 

@@ -2,6 +2,7 @@ from typing import List
 
 import sofistik.sof.sofistik_daten as sof_struct
 from sofistik.utils import logger
+
 from .sofistik_discover import Sofistik
 
 

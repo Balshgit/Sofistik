@@ -1,11 +1,9 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config, create_engine
-from sqlalchemy import pool
-
 from alembic import context
-from sofistik.settings import DATABASE_NAME
 from sofistik.database.models import Base
+from sofistik.settings import DATABASE_NAME
+from sqlalchemy import create_engine, engine_from_config, pool
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

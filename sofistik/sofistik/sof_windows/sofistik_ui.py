@@ -1,10 +1,9 @@
 from PyQt6 import QtGui
 
+from sofistik.database.commands import db_insert_or_update_quad
 from sofistik.sof_windows.pyqt_windows import MainWindowUI
 from sofistik.sofistik_data_objects import quad_dict_from_db
-from sofistik.database.commands import db_insert_or_update_quad
-from sofistik.utils import create_image
-from sofistik.utils import logger
+from sofistik.utils import create_image, logger
 
 
 class SofistikUI(MainWindowUI):

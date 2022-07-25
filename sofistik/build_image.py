@@ -4,7 +4,7 @@ from typing import List
 import sofistik.sof.sofistik_daten as sof_struct
 from sofistik.settings import SOFISTIK_YEAR
 from sofistik.sofistik_discover import Sofistik
-from sofistik.utils import read_data_from_file, create_image, logger, write_to_file
+from sofistik.utils import create_image, logger, read_data_from_file, write_to_file
 
 
 def quad_dict_from_db(sofistik_year: int, filepath: Path) -> dict:
@@ -77,4 +77,3 @@ if __name__ == '__main__':
         # from_db(Path('../db/Test.cdb'))
     except Exception as e:
         logger.error(e)
-        raise(e)

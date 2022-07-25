@@ -1,6 +1,15 @@
 import datetime
 
-from sqlalchemy import Column, String, Integer, ForeignKey, CHAR, DATETIME, INTEGER, Text
+from sqlalchemy import (
+    CHAR,
+    DATETIME,
+    INTEGER,
+    Column,
+    ForeignKey,
+    Integer,
+    String,
+    Text,
+)
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.sql.functions import current_timestamp
 

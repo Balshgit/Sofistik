@@ -1,6 +1,5 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QDialog, QMainWindow
-
 from sofistik.sofistik_discover import Sofistik
 
 
