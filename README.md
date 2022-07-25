@@ -4,12 +4,13 @@
 
 # Convert ui to py script
 
-    python -m PyQt6.uic.pyuic -x sofistik.ui -o sofui.py
+```bash
+cd designer_app_files
+python -m PyQt6.uic.pyuic -x sofistik.ui -o sofui.py
+```
 
 # Create exe
 from git bash
-
-    pyinstaller sofui.py
 
 -F - creates one exe
 
@@ -17,8 +18,10 @@ from git bash
 
 -w - create app without console
 
-    pyinstaller -F -i icon.ico -w sofui.py
-    
+```bash
+cd ./sofistik
+pyinstaller -F -i icon.ico -w sofui.py
+```
     
 ## Create migrations
 
