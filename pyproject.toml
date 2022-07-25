@@ -1,4 +1,4 @@
-tool.poetry]
+[tool.poetry]
 name = "Sofistik"
 version = "0.3.1"
 description = "Image creation from sofistik DB"

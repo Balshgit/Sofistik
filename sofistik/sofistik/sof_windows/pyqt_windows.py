@@ -752,6 +752,7 @@ class AskPlateUI:
         self.area.setFont(font)
         self.area.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.area.setObjectName("area_number")
+        self.area.setMinimum(1)
         self.area.setMaximum(1000000)
         self.select_area_OK = QtWidgets.QPushButton(self.ask_area)
         self.select_area_OK.setGeometry(QtCore.QRect(100, 40, 51, 31))

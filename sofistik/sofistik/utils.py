@@ -74,8 +74,8 @@ def create_image(quad_dict: dict, image_name: str) -> None:
     img = Image.new('RGB', (1500, 500), (255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    quad = mirror_quad_by_y(quad_dict)
-    for quad_number, rectangle in quad.items():
+    # quad = mirror_quad_by_y(quad_dict)
+    for quad_number, rectangle in quad_dict.items():
         # Prepare text
         fontsize = 15
         text_x, text_y = get_text_coordinates(rectangle, fontsize)
